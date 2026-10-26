@@ -44,7 +44,7 @@
 ```bash
 git clone https://github.com/Mahi130306/OpenBoxComm/
 cd OpenBoxComm
-npm install
+pnpm install
 ```
 
 ### Environment Setup
@@ -77,7 +77,7 @@ NEXT_PUBLIC_LOGIN_ENABLED=false
 ### Run the Dev Server
 
 ```bash
-npm run dev
+pnpm dev
 ```
 
 Open **[http://localhost:3000](http://localhost:3000)** and you're live.
@@ -230,14 +230,14 @@ Add a logo at `/public/images/myserver.png`
 
 ```bash
 # Development
-npm run dev
+pnpm dev
 
 # Build for Production
-npm run build
-npm run start
+pnpm build
+pnpm start
 
 # Code quality
-npm run lint
+pnpm lint
 ```
 
 ---
