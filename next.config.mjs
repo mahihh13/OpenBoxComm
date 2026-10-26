@@ -1,5 +1,3 @@
-import { SITE_URL } from './lib/site-url.mjs'
-
 /** @type {import('next').NextConfig} */
 
 // Stable identifier for this build — used by UpdateBanner to detect new deploys.
@@ -14,6 +12,7 @@ const nextConfig = {
     NEXT_PUBLIC_BUILD_ID: BUILD_ID,
   },
   reactStrictMode: true,
+  skipTrailingSlashRedirect: true,
 
   // ── Strip X-Powered-By header ─────────────────────────────────────────────
   poweredByHeader: false,
@@ -110,15 +109,9 @@ const nextConfig = {
   },
 
   // ── Typo-fix redirects ────────────────────────────────────────────────────
+  // Host redirects are managed in Vercel Domains. Do not add them here.
   async redirects() {
     return [
-      {
-        source: '/:path*',
-        has: [{ type: 'host', value: new URL(SITE_URL).hostname.replace(/^/, 'www.') }],
-        destination: `${SITE_URL}/:path*`,
-        statusCode: 301,
-      },
-
       // Home page
       { source: '/hmoe', destination: '/', permanent: true },
       { source: '/home', destination: '/', permanent: true },
@@ -159,7 +152,7 @@ const nextConfig = {
 
       // Join page
       { source: '/joinus', destination: '/join', permanent: true },
-      { source: '/jion/', destination: '/join', permanent: true },
+      { source: '/jion', destination: '/join', permanent: true },
       { source: '/join-us', destination: '/join', permanent: true },
 
       // Blog page
