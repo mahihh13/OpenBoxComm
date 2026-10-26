@@ -135,3 +135,24 @@
     transform: translateY(0) scale(1);
   }
 }
+/* Add to app/globals.css */
+@keyframes footer-marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-footer-marquee {
+  animation: footer-marquee 40s linear infinite;
+}
+
+.animate-footer-marquee-reverse {
+  animation: footer-marquee 40s linear infinite reverse;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-footer-marquee,
+  .animate-footer-marquee-reverse {
+    animation: none;
+  }
+}

@@ -204,9 +204,32 @@ export function Footer() {
 
       </div>
 
-      {/* Wordmark, full width so it can be big */}
-      <div aria-hidden="true" className="mt-10 overflow-hidden px-2 pb-6 text-center sm:px-4">
-        <span className="block whitespace-nowrap text-[clamp(3rem,12.5vw,18rem)] font-heading font-extrabold leading-[1.2] tracking-tight text-foreground">
+      {/* Wordmark, full width so it can be big, with outline marquee behind it */}
+      <div className="relative mt-10 overflow-hidden px-2 pb-6 text-center sm:px-4">
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 flex select-none flex-col justify-center gap-1"
+        >
+          <div className="animate-footer-marquee flex w-max whitespace-nowrap font-heading text-[clamp(2rem,8vw,6rem)] font-extrabold uppercase leading-[1.1] text-foreground opacity-[0.16] [-webkit-text-fill-color:transparent] [-webkit-text-stroke:1px_currentColor]">
+            {Array.from({ length: 8 }).map((_, i) => (
+              <span key={i} className="pr-[0.6em]">
+                Open Box
+              </span>
+            ))}
+          </div>
+          <div className="animate-footer-marquee-reverse flex w-max whitespace-nowrap font-heading text-[clamp(2rem,8vw,6rem)] font-extrabold uppercase leading-[1.1] text-cyan-500 opacity-[0.25] [-webkit-text-fill-color:transparent] [-webkit-text-stroke:1px_currentColor]">
+            {Array.from({ length: 8 }).map((_, i) => (
+              <span key={i} className="pr-[0.6em]">
+                Open Box
+              </span>
+            ))}
+          </div>
+        </div>
+
+        <span
+          aria-hidden="true"
+          className="relative z-10 block whitespace-nowrap text-[clamp(3rem,12.5vw,18rem)] font-heading font-extrabold leading-[1.2] tracking-tight text-foreground"
+        >
           Open Box
         </span>
       </div>
