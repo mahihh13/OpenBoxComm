@@ -35,6 +35,11 @@ export const metadata: Metadata = {
     'student tech community',
     'free Discord server',
     'peer connections',
+    'indian developers discord',
+    'indian gamers discord',
+    'yes',
+    'openbox',
+    'openbox email'
   ],
   alternates: { canonical: '/' },
 }
@@ -104,7 +109,7 @@ export default function Home() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <ImportantNoticeMarquee />
+      {/* <ImportantNoticeMarquee /> */}
 
       {/* Hero Section */}
       <section id="herosection" className="relative overflow-hidden border-b border-border bg-background">
