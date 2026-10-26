@@ -2,8 +2,9 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 
 export const metadata: Metadata = {
-  title: 'Terms & Conditions — Open Box',
+  title: 'Terms & Conditions',
   description: 'Terms and Conditions for using the Open Box platform, website, Discord servers, and community services.',
+  alternates: { canonical: '/legal/terms-and-conditions' },
 }
 
 export default function TermsAndConditionsPage() {

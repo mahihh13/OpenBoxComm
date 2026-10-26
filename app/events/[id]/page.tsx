@@ -1,4 +1,5 @@
 import { notFound } from 'next/navigation'
+import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 import {
@@ -22,6 +23,22 @@ import { TTSPlayer } from '@/components/TTSPlayer'
 
 export function generateStaticParams() {
   return events.map((event) => ({ id: event.id }))
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ id: string }>
+}): Promise<Metadata> {
+  const { id } = await params
+  const event = getEvent(id)
+  if (!event) return {}
+
+  return {
+    title: `${event.name} Event`,
+    description: event.description,
+    alternates: { canonical: `/events/${id}` },
+  }
 }
 
 function getServerAccent(slug: string): string {

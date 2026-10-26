@@ -1,8 +1,9 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Copyright & DMCA Policy — Open Box',
+  title: 'Copyright & DMCA Policy',
   description: 'How Open Box handles copyright infringement claims under Indian law and the DMCA.',
+  alternates: { canonical: '/legal/dmca-policy' },
 }
 
 export default function DmcaPolicyPage() {

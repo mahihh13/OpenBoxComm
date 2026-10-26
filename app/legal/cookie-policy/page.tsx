@@ -2,8 +2,9 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 
 export const metadata: Metadata = {
-  title: 'Cookie Policy — Open Box',
+  title: 'Cookie Policy',
   description: 'Cookie Policy for Open Box — how we use cookies and similar tracking technologies.',
+  alternates: { canonical: '/legal/cookie-policy' },
 }
 
 export default function CookiePolicyPage() {

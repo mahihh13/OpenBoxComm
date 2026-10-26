@@ -18,8 +18,9 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const docMeta = docs.find(d => d.slug === slug)
   if (!docMeta) return {}
   return {
-    title: `${docMeta.title} — Open Box Docs`,
+    title: slug === 'rules' ? 'Community Rules Guide' : docMeta.title,
     description: docMeta.description,
+    alternates: { canonical: `/doc/${slug}` },
     openGraph: {
       title: `${docMeta.title} — Open Box Docs`,
       description: docMeta.description,

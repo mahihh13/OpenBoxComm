@@ -2,8 +2,9 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 
 export const metadata: Metadata = {
-  title: 'Acceptable Use Policy — Open Box',
+  title: 'Acceptable Use Policy',
   description: 'Acceptable Use Policy for Open Box — permitted uses, prohibited conduct, and brand usage guidelines.',
+  alternates: { canonical: '/legal/acceptable-use-policy' },
 }
 
 export default function AcceptableUsePolicyPage() {

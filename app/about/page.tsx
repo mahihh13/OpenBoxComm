@@ -5,7 +5,7 @@ import { Badge } from '@/components/ui/badge'
 import Link from 'next/link'
 
 export const metadata: Metadata = {
-  title: 'About Open Box',
+  title: 'About the Community',
   description: 'Learn about Open Box — a people-focused network of communities for gamers, students, and creators. Free and open to everyone.',
   alternates: { canonical: '/about' },
 }

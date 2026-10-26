@@ -2,7 +2,9 @@ import Link from 'next/link'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: '404 — Page Not Found | Open Box',
+  title: 'Page Not Found',
+  description: 'The requested Open Box page could not be found. Check the address or return to the home page.',
+  robots: { index: false, follow: false },
 }
 
 export default function NotFound() {

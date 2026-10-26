@@ -6,7 +6,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Badge } from '@/components/ui/badge'
 
 export const metadata: Metadata = {
-  title: 'Contact Us — Open Box',
+  title: 'Contact the Team',
   description: 'Get in touch with the Open Box team. Reach us by email, Discord, or through our contact form.',
   openGraph: {
     title: 'Contact Us — Open Box',

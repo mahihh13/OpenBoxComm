@@ -3,10 +3,19 @@ import Link from 'next/link'
 import { Mail, Megaphone, MapPin, Clock, ArrowRight, Sparkles, TrendingUp, HelpCircle, Heart, Sparkle } from 'lucide-react'
 import { notFound } from 'next/navigation'
 
-export const metadata: Metadata = {
-    title: 'Careers — Open Box',
-    description: 'Join the team building the future of Indian Discord communities. Discover active openings for Social Media and Marketing roles at Open Box.',
-    alternates: { canonical: '/careers' },
+export async function generateMetadata({
+    params,
+}: {
+    params: Promise<{ slug: string }>
+}): Promise<Metadata> {
+    const { slug } = await params
+    const role = slug.split('-').map((word) => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')
+    return {
+        title: `${role} Career`,
+        description: `Explore the ${role} opportunity with Open Box, a free Discord community network in India.`,
+        alternates: { canonical: `/careers/${slug}` },
+        robots: { index: false, follow: false },
+    }
 }
 
 export default function CareersPage() {

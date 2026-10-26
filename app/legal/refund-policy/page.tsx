@@ -2,8 +2,9 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 
 export const metadata: Metadata = {
-  title: 'Refund Policy — Open Box',
+  title: 'Refund Policy',
   description: 'Refund Policy for Open Box — how we handle refund requests for Patreon, UPI, and other payment channels.',
+  alternates: { canonical: '/legal/refund-policy' },
 }
 
 export default function RefundPolicyPage() {

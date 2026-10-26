@@ -2,8 +2,9 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 
 export const metadata: Metadata = {
-  title: 'Community Rules — Open Box',
+  title: 'Community Rules',
   description: 'Community Rules for all Open Box spaces — Discord servers, website, events, and affiliated platforms.',
+  alternates: { canonical: '/legal/community-rules' },
 }
 
 export default function CommunityRulesPage() {

@@ -5,7 +5,7 @@ import { notFound } from 'next/navigation'
 
 export const metadata: Metadata = {
     title: 'Careers',
-    description: 'Join the team building the future of Indian Discord communities. Discover active openings for Social Media and Marketing roles at Open Box.',
+    description: 'Explore community roles and opportunities to help build Open Box, a free Discord network in India.',
     alternates: { canonical: '/careers' },
 }
 

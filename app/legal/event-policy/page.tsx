@@ -2,8 +2,9 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 
 export const metadata: Metadata = {
-  title: 'Event Policy — Open Box',
+  title: 'Event Policy',
   description: 'Event Policy for Open Box — rules, conduct, cancellations, and terms for all Open Box events.',
+  alternates: { canonical: '/legal/event-policy' },
 }
 
 export default function EventPolicyPage() {

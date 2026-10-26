@@ -3,7 +3,7 @@ import { blogs } from '@/lib/community-data'
 import { BlogSearch } from '@/components/BlogSearch'
 
 export const metadata: Metadata = {
-  title: 'Blogs',
+  title: 'Community Blog',
   description: 'Community updates, building playbooks, event recaps, and practical notes from Open Box servers.',
   alternates: { canonical: '/blogs' },
 }

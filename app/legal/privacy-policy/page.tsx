@@ -2,8 +2,9 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 
 export const metadata: Metadata = {
-  title: 'Privacy Policy — Open Box',
+  title: 'Privacy Policy',
   description: 'Privacy Policy for Open Box — how we collect, use, and protect your personal data under the DPDP Act 2023.',
+  alternates: { canonical: '/legal/privacy-policy' },
 }
 
 export default function PrivacyPolicyPage() {
