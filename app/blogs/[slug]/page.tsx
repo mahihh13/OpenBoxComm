@@ -7,6 +7,7 @@ import { Badge } from '@/components/ui/badge'
 import { blogs, getBlog, getTeamMember } from '@/lib/community-data'
 import { getBlogContent } from '@/lib/Blog'
 import { TTSPlayer } from '@/components/TTSPlayer'
+import { SITE_URL } from '@/lib/constants'
 
 export function generateStaticParams() {
   return blogs
@@ -21,6 +22,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   return {
     title: post.title,
     description: post.excerpt,
+    alternates: { canonical: `/blogs/${slug}` },
     openGraph: {
       title: post.title,
       description: post.excerpt,
@@ -81,7 +83,7 @@ export default async function BlogDetailPage({ params }: { params: Promise<{ slu
     dateModified: modifiedDate.toISOString().split('T')[0],
     mainEntityOfPage: {
       '@type': 'WebPage',
-      '@id': `https://openboxcomm.in/blogs/${post.slug}`,
+      '@id': `${SITE_URL}/blogs/${post.slug}`,
     },
     author: author
       ? {
@@ -90,20 +92,20 @@ export default async function BlogDetailPage({ params }: { params: Promise<{ slu
         jobTitle: author.role,
         image: author.avatar,
         description: author.bio,
-        url: `https://openboxcomm.in/team/${author.slug}`,
+        url: `${SITE_URL}/team/${author.slug}`,
         sameAs: Object.values(author.socials || {}).filter(Boolean),
       }
       : {
         '@type': 'Organization',
         name: 'Open Box Team',
-        url: 'https://openboxcomm.in',
+        url: SITE_URL,
       },
     publisher: {
       '@type': 'Organization',
       name: 'Open Box',
       logo: {
         '@type': 'ImageObject',
-        url: 'https://openboxcomm.in/images/OB.png',
+        url: `${SITE_URL}/images/OB.png`,
       },
     },
   }

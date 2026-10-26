@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import { GithubIcon } from 'lucide-react'
+import { GithubIcon, Linkedin } from 'lucide-react'
+import { socialProfiles } from '@/lib/seo'
 
 // Social icon SVGs (inline, no extra dep)
 const YoutubeIcon = () => (
@@ -58,33 +59,45 @@ export function Footer() {
   const socialLinks = [
     {
       name: 'YouTube',
-      href: 'https://www.youtube.com/@obcommunities-yt',
+      href: socialProfiles.youtube,
       icon: <YoutubeIcon />,
       id: 'footer-youtube',
     },
     {
       name: 'Instagram',
-      href: 'https://www.instagram.com/openboxcomm/',
+      href: socialProfiles.instagram,
       icon: <InstagramIcon />,
       id: 'footer-instagram',
     },
     {
       name: 'Patreon',
-      href: 'https://patreon.com/OpenBoxComm',
+      href: socialProfiles.patreon,
       icon: <PatreonIcon />,
       id: 'footer-patreon',
     },
     {
       name: 'X (Twitter)',
-      href: 'https://x.com/Openboxcomm',
+      href: socialProfiles.x,
       icon: <XIcon />,
       id: 'footer-x',
     },
     {
       name: 'Discord',
-      href: 'https://discord.gg/7ZWckKU89J',
+      href: socialProfiles.discord,
       icon: <DiscordIcon />,
       id: 'footer-discord',
+    },
+    {
+      name: 'GitHub',
+      href: socialProfiles.github,
+      icon: <GithubIcon className="h-5 w-5" />,
+      id: 'footer-github',
+    },
+    {
+      name: 'LinkedIn',
+      href: socialProfiles.linkedin,
+      icon: <Linkedin className="h-5 w-5" />,
+      id: 'footer-linkedin',
     },
     {
       name: 'WhatsApp',
@@ -249,7 +262,7 @@ export function Footer() {
             <p>
               Want to contribute to the site?{'  '}
               <Link
-                href="https://github.com/Mahi130306/OpenBoxComm"
+                href={socialProfiles.github}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-1.5 font-medium text-foreground/80 hover:text-cyan-500 transition-colors duration-150">

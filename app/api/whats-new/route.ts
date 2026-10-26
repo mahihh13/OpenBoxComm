@@ -25,7 +25,7 @@ const updates: Update[] = [
     title: 'Where We Go From Here',
     type: 'blog',
     date: '2026-06-29',
-    description: 'OpenBox has gone from a club side-project to its own independent community.',
+    description: 'Open Box has gone from a club side-project to its own independent community.',
     href: '/blogs/where-we-go-from-here',
     isNew: true,
   },

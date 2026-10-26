@@ -13,6 +13,8 @@ import { SecurityGuard } from '@/components/SecurityGuard'
 import { WhatsNewTab } from '@/components/WhatsNewTab'
 import { UpdateBanner } from '@/components/UpdateBanner'
 import { Inter, Syne } from 'next/font/google'
+import { SITE_URL } from '@/lib/constants'
+import { socialProfiles } from '@/lib/seo'
 import './globals.css'
 
 const inter = Inter({
@@ -27,17 +29,15 @@ const syne = Syne({
   display: 'swap',
 })
 
-const BASE_URL = 'https://openboxcomm.in'
-
 export const metadata: Metadata = {
-  metadataBase: new URL(BASE_URL),
+  metadataBase: new URL(SITE_URL),
   title: {
-    default: 'Open Box — Community for Everyone',
-    template: '%s — Open Box',
+    default: 'Open Box Community | Free Discord for Developers, Gamers & Students in India',
+    template: '%s | Open Box',
   },
-  description: 'A community platform with multiple Discord servers. Join Open Box to build, learn, game, and connect free.',
-  keywords: ['Open Box', 'Discord community', 'gaming server', 'developer community', 'study group', 'peer connections', 'free community', 'the best Discord community', 'the best tech community', 'open box community', 'open box comm', 'OB', 'ob', 'ob.net.in', 'obcomm', 'obcomm.in', 'obcommunity', 'obcommunity.in', 'obcommunity.net', 'openboxcommunity.in', 'openboxcommunity.net', 'openboxcommunity.org', 'obcommunity.org', 'obcommunity.org.in', 'openboxcommunity.org.in', 'the open box community', 'openboxcommunity.org.in'],
-  authors: [{ name: 'Open Box', url: BASE_URL }],
+  description: 'Join Open Box, a free multi-server Discord community for developers, gamers and students in India. Explore Junction, OB Dev and OB GG, and join events.',
+  keywords: ['Open Box', 'Open Box Community', 'Discord community India', 'developer community India', 'gaming community India', 'student community India', 'free Discord community'],
+  authors: [{ name: 'Open Box', url: SITE_URL }],
   creator: 'Open Box',
   icons: {
     icon: '/images/OB.png',
@@ -45,25 +45,24 @@ export const metadata: Metadata = {
     shortcut: '/images/OB.png',
   },
   openGraph: {
-    title: 'Open Box — Community for Everyone',
-    description: 'A community platform with multiple Discord servers. Join for gaming, development, learning, and peer connections.',
-    url: BASE_URL,
+    title: 'Open Box Community | Free Discord for Developers, Gamers & Students in India',
+    description: 'Join Open Box, a free multi-server Discord community for developers, gamers and students in India. Explore Junction, OB Dev and OB GG, and join events.',
+    url: SITE_URL,
     siteName: 'Open Box',
-    images: [{ url: 'https://openboxcomm.in/images/og-default.png', width: 1200, height: 630, alt: 'Open Box Community' }],
+    images: [{ url: `${SITE_URL}/images/og-default.png`, width: 1200, height: 630, alt: 'Open Box Community' }],
     locale: 'en_IN',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Open Box — Community for Everyone',
-    description: 'A community platform with multiple Discord servers. Join for gaming, development, learning, and peer connections.',
+    title: 'Open Box Community | Free Discord for Developers, Gamers & Students in India',
+    description: 'Join Open Box, a free multi-server Discord community for developers, gamers and students in India. Explore Junction, OB Dev and OB GG, and join events.',
     images: ['/images/og-default.png'],
     site: '@Openboxcomm',
     creator: '@Openboxcomm',
   },
-  alternates: { canonical: BASE_URL },
+  alternates: { canonical: SITE_URL },
   robots: { index: true, follow: true, googleBot: { index: true, follow: true }, 'max-image-preview': 'large', 'max-snippet': -1 },
-  verification: { google: 'google-site-verification-code' },
 }
 
 const jsonLd = {
@@ -71,23 +70,19 @@ const jsonLd = {
   '@graph': [
     {
       '@type': 'Organization',
-      '@id': `${BASE_URL}/#organization`,
+      '@id': `${SITE_URL}/#organization`,
       name: 'Open Box',
-      description: 'A free community platform for gaming, development, learning, and peer connections.',
-      url: BASE_URL,
-      logo: { '@type': 'ImageObject', url: `${BASE_URL}/images/OB.png`, width: 512, height: 512 },
-      image: { '@type': 'ImageObject', url: `${BASE_URL}/images/og-default.png`, width: 1200, height: 630 },
-      sameAs: [
-        'https://discord.gg/7ZWckKU89J',
-        'https://www.instagram.com/openboxcomm/',
-        'https://x.com/Openboxcomm',
-        'https://www.youtube.com/@obcommunities-yt',
-      ],
+      alternateName: 'Open Box Community',
+      description: 'A free multi-server Discord community for developers, gamers and students in India.',
+      url: SITE_URL,
+      logo: { '@type': 'ImageObject', url: `${SITE_URL}/images/OB.png`, width: 512, height: 512 },
+      image: { '@type': 'ImageObject', url: `${SITE_URL}/images/og-default.png`, width: 1200, height: 630 },
+      sameAs: Object.values(socialProfiles),
       contactPoint: {
         '@type': 'ContactPoint',
         contactType: 'Customer Support',
         email: 'admin@openboxcomm.in',
-        url: `${BASE_URL}/contact-us`,
+        url: `${SITE_URL}/contact-us`,
       },
       foundingDate: '2021-01-01',
       areaServed: 'IN',
@@ -95,40 +90,16 @@ const jsonLd = {
     },
     {
       '@type': 'WebSite',
-      '@id': `${BASE_URL}/#website`,
-      url: BASE_URL,
+      '@id': `${SITE_URL}/#website`,
+      url: SITE_URL,
       name: 'Open Box',
-      description: 'A free community platform for gaming, development, learning, and peer connections.',
-      publisher: { '@id': `${BASE_URL}/#organization` },
+      description: 'A free multi-server Discord community for developers, gamers and students in India.',
+      publisher: { '@id': `${SITE_URL}/#organization` },
       potentialAction: {
         '@type': 'SearchAction',
-        target: { '@type': 'EntryPoint', urlTemplate: `${BASE_URL}/servers?q={search_term_string}` },
+        target: { '@type': 'EntryPoint', urlTemplate: `${SITE_URL}/servers?q={search_term_string}` },
         'query-input': 'required name=search_term_string',
       },
-    },
-    {
-      '@type': 'BreadcrumbList',
-      '@id': `${BASE_URL}/#breadcrumbs`,
-      itemListElement: [
-        {
-          '@type': 'ListItem',
-          position: 1,
-          name: 'Home',
-          item: BASE_URL,
-        },
-        {
-          '@type': 'ListItem',
-          position: 2,
-          name: 'Servers',
-          item: `${BASE_URL}/servers`,
-        },
-        {
-          '@type': 'ListItem',
-          position: 3,
-          name: 'Events',
-          item: `${BASE_URL}/events`,
-        },
-      ],
     },
   ],
 }
@@ -167,7 +138,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             gtag('config', 'G-58P0FR4M2T');
           `}
         </Script>
-        <Script
+        <script
           id="json-ld"
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

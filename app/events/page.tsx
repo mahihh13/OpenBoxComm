@@ -272,7 +272,7 @@ export default function EventsPage() {
           <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-border bg-surface px-4 py-1.5 shadow-sm">
             <Sparkles className="h-4 w-4 text-cyan-500" />
             <span className="text-xs font-semibold uppercase tracking-[0.16em] text-muted-foreground">
-              OpenBox Events & Gatherings
+              Open Box Events & Gatherings
             </span>
           </div>
 
@@ -281,7 +281,7 @@ export default function EventsPage() {
           </h1>
 
           <p className="mx-auto max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg">
-            Workshops, gaming sessions, build labs, and community hangouts across all OpenBox servers.
+            Workshops, gaming sessions, build labs, and community hangouts across all Open Box servers.
           </p>
 
           {/* Stats Bar */}

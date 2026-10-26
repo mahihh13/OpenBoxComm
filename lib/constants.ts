@@ -1,6 +1,8 @@
+import { SITE_URL } from './site-url.mjs'
+
 export const SITE_NAME = 'Open Box'
-export const SITE_DESCRIPTION = 'A tech community with multiple Discord servers. Join us to build, learn, and connect.'
-export const SITE_URL = process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'
+export const SITE_DESCRIPTION = 'Join Open Box, a free multi-server Discord community for developers, gamers and students in India. Explore Junction, OB Dev and OB GG, and join events.'
+export { SITE_URL }
 
 export const DISCORD_INVITE_MAIN = process.env.NEXT_PUBLIC_DISCORD_INVITE_MAIN || 'https://discord.gg/7ZWckKU89J'
 export const DISCORD_JN_INVITE = process.env.NEXT_PUBLIC_DISCORD_JN_INVITE || 'https://discord.gg/7ZWckKU89J'

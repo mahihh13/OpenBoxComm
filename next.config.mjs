@@ -1,3 +1,5 @@
+import { SITE_URL } from './lib/site-url.mjs'
+
 /** @type {import('next').NextConfig} */
 
 // Stable identifier for this build — used by UpdateBanner to detect new deploys.
@@ -110,6 +112,13 @@ const nextConfig = {
   // ── Typo-fix redirects ────────────────────────────────────────────────────
   async redirects() {
     return [
+      {
+        source: '/:path*',
+        has: [{ type: 'host', value: new URL(SITE_URL).hostname.replace(/^/, 'www.') }],
+        destination: `${SITE_URL}/:path*`,
+        statusCode: 301,
+      },
+
       // Home page
       { source: '/hmoe', destination: '/', permanent: true },
       { source: '/home', destination: '/', permanent: true },

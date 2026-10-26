@@ -4,17 +4,16 @@
  */
 
 import type { Metadata } from 'next'
-
-const BASE_URL = 'https://openboxcomm.in'
+import { SITE_URL } from '@/lib/constants'
 
 /**
  * Standard metadata defaults
  */
 export const defaultMetadata = {
-  title: 'Open Box | Community for Everyone',
-  description: 'A community network with multiple Discord servers. Join Open Box to build, learn, game, and connect | free.',
+  title: 'Open Box Community | Free Discord for Developers, Gamers & Students in India',
+  description: 'Join Open Box, a free multi-server Discord community for developers, gamers and students in India. Explore Junction, OB Dev and OB GG, and join events.',
   keywords: ['Open Box', 'Discord community', 'gaming', 'development', 'learning', 'networking'],
-  baseUrl: BASE_URL,
+  baseUrl: SITE_URL,
 }
 
 /**
@@ -45,11 +44,10 @@ export function generatePageMetadata(config: {
     imageHeight = 630,
   } = config
 
-  const fullTitle = `${title} | Open Box`
-  const canonicalUrl = `${BASE_URL}${path}`
+  const canonicalUrl = `${SITE_URL}${path}`
 
   return {
-    title: fullTitle,
+    title,
     description,
     keywords: [...keywords, ...defaultMetadata.keywords],
     alternates: { canonical: canonicalUrl },
@@ -60,7 +58,7 @@ export function generatePageMetadata(config: {
       'max-snippet': -1,
     },
     openGraph: {
-      title: fullTitle,
+      title,
       description,
       url: canonicalUrl,
       type,
@@ -76,7 +74,7 @@ export function generatePageMetadata(config: {
     },
     twitter: {
       card: 'summary_large_image',
-      title: fullTitle,
+      title,
       description,
       images: [imageUrl],
       creator: '@Openboxcomm',
@@ -101,7 +99,7 @@ export function generateBreadcrumbSchema(items: BreadcrumbItem[]) {
       '@type': 'ListItem',
       position: index + 1,
       name: item.name,
-      item: `${BASE_URL}${item.path}`,
+      item: `${SITE_URL}${item.path}`,
     })),
   }
 }
@@ -137,13 +135,13 @@ export function generateArticleSchema(config: ArticleConfig) {
       name: 'Open Box',
       logo: {
         '@type': 'ImageObject',
-        url: `${BASE_URL}/images/OB.png`,
+        url: `${SITE_URL}/images/OB.png`,
       },
     },
-    url: `${BASE_URL}/blogs/${config.slug}`,
+    url: `${SITE_URL}/blogs/${config.slug}`,
     mainEntityOfPage: {
       '@type': 'WebPage',
-      '@id': `${BASE_URL}/blogs/${config.slug}`,
+      '@id': `${SITE_URL}/blogs/${config.slug}`,
     },
   }
 }
@@ -174,11 +172,11 @@ export function generateEventSchema(config: EventConfig) {
     eventStatus: 'https://schema.org/EventScheduled',
     eventAttendanceMode: 'https://schema.org/OnlineEventAttendanceMode',
     location: config.location || 'Online',
-    url: `${BASE_URL}${config.url}`,
+    url: `${SITE_URL}${config.url}`,
     organizer: {
       '@type': 'Organization',
       name: config.organizer || 'Open Box',
-      url: BASE_URL,
+      url: SITE_URL,
     },
   }
 }
@@ -211,9 +209,11 @@ export function generateFAQSchema(items: FAQItem[]) {
  */
 export const socialProfiles = {
   discord: 'https://discord.gg/7ZWckKU89J',
-  twitter: 'https://x.com/Openboxcomm',
-  instagram: 'https://www.instagram.com/openboxcomm/',
   youtube: 'https://www.youtube.com/@obcommunities-yt',
+  instagram: 'https://www.instagram.com/openboxcomm/',
+  x: 'https://x.com/Openboxcomm',
+  github: 'https://github.com/Mahi130306/OpenBoxComm',
+  linkedin: 'https://www.linkedin.com/in/mahi-hh-59001831b/',
   patreon: 'https://patreon.com/OpenBoxComm',
 }
 

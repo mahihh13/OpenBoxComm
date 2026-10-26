@@ -87,7 +87,7 @@ export default function SupportClient() {
         'Everything in Rookie (All 5)',
         'Voting rights on community decisions',
         'Direct feedback channel with admins',
-        'Early access to OpenBox events',
+        'Early access to Open Box events',
         'Discount on next membership'
       ],
       badge: 'Most Popular',
@@ -106,12 +106,12 @@ export default function SupportClient() {
       monthlyPrice: 7.99,
       annualPrice: 79.99,
       icon: Crown,
-      description: 'The highest tier. You are literally holding OpenBox up.',
+      description: 'The highest tier. You are literally holding Open Box up.',
       perks: [
         'Everything in GOAT (All 9)',
         'Priority consideration for staff recruitment',
         'Direct line to core team via private channel',
-        'Name in OpenBox credits on supporter page*'
+        'Name in Open Box credits on supporter page*'
       ],
       badge: 'Elite Supporter',
       theme: {
@@ -175,7 +175,7 @@ export default function SupportClient() {
     { name: 'Direct Line to Core ', npc: false, rookie: false, goat: false, legend: true, op: true },
     { name: 'Name on Website Credits Section', npc: false, rookie: false, goat: false, legend: true, op: true },
     { name: 'Exclusive OP Supporter Discord Badge', npc: false, rookie: false, goat: false, legend: false, op: true },
-    { name: '12-16% Off All Ticketed OpenBox Events', npc: false, rookie: false, goat: false, legend: false, op: true },
+    { name: '12-16% Off All Ticketed Open Box Events', npc: false, rookie: false, goat: false, legend: false, op: true },
     { name: 'Monthly Face-to-Face Voice Hangout', npc: false, rookie: false, goat: false, legend: false, op: true },
     { name: 'DBW Show Credit Namedropped Weekly', npc: false, rookie: false, goat: false, legend: false, op: true },
   ]

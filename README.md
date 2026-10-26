@@ -8,7 +8,7 @@
 
 **Built with Next.js · TypeScript · Tailwind CSS · Framer Motion · GSAP**
 
-[![Live Site](https://img.shields.io/badge/live-openboxcomm.in-FF4040?style=for-the-badge)](https://www.openboxcomm.in/)
+[![Live Site](https://img.shields.io/badge/live-openboxcomm.in-FF4040?style=for-the-badge)](https://openboxcomm.in/)
 
 [![Discord](https://img.shields.io/badge/Discord-5865F2?style=for-the-badge&logo=discord&logoColor=white)](https://discord.gg/7ZWckKU89J)
 
@@ -18,7 +18,7 @@
 
 [![Instagram](https://img.shields.io/badge/Instagram-%23E4405F.svg?logo=Instagram&logoColor=white)](https://instagram.com/mahihh1212) [![LinkedIn](https://img.shields.io/badge/LinkedIn-%230077B5.svg?logo=linkedin&logoColor=white)](https://linkedin.com/in/mahi-h-h) [![X](https://img.shields.io/badge/X-black.svg?logo=X&logoColor=white)](https://x.com/MahiHH212) [![email](https://img.shields.io/badge/Email-D14836?logo=gmail&logoColor=white)](mailto:mahihh.work@gmail.com)
 
-**[Visit the Site](https://www.openboxcomm.in/)** · **[Report a Bug](mailto:support@openboxcomm.in)** · **[Request a Feature](mailto:hello@openboxcomm.in)**
+**[Visit the Site](https://openboxcomm.in/)** · **[Report a Bug](mailto:support@openboxcomm.in)** · **[Request a Feature](mailto:hello@openboxcomm.in)**
 
 </div>
 
@@ -294,6 +294,6 @@ Here are the logos for our various Open Box servers:
 
 <div align="center">
 
-Made with ⚡ by the **OpenBox Team**
+Made with ⚡ by the **Open Box Team**
 
 </div>

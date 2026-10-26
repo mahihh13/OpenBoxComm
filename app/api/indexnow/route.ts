@@ -1,10 +1,10 @@
 /// <reference types="node" />
 import { NextResponse } from 'next/server'
 import sitemap from '@/app/sitemap'
+import { SITE_URL } from '@/lib/constants'
 
-const BASE_URL = 'https://openboxcomm.in'
 const INDEXNOW_KEY = 'eefb2bed56144c93aa1eba6a9e5d9a98'
-const KEY_LOCATION = `${BASE_URL}/${INDEXNOW_KEY}.txt`
+const KEY_LOCATION = `${SITE_URL}/${INDEXNOW_KEY}.txt`
 
 // IndexNow batch submission endpoints (Bing + Yandex both use the same protocol)
 const INDEXNOW_ENDPOINTS = [
@@ -27,7 +27,7 @@ async function submitToEndpoint(endpoint: string, urls: string[]) {
     method: 'POST',
     headers: { 'Content-Type': 'application/json; charset=utf-8' },
     body: JSON.stringify({
-      host: 'openboxcomm.in',
+      host: new URL(SITE_URL).hostname,
       key: INDEXNOW_KEY,
       keyLocation: KEY_LOCATION,
       urlList: urls,
@@ -99,4 +99,3 @@ export async function GET() {
     )
   }
 }
-

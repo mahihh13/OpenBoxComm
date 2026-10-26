@@ -6,6 +6,7 @@ import { DirectorySearch } from '@/components/DirectorySearch'
 import { MasterCalendar } from '@/components/MasterCalendar'
 import { CTASection } from '@/components/CTASection'
 import { ImportantNoticeMarquee } from '@/components/ImportantNoticeMarquee'
+import { SITE_URL } from '@/lib/constants'
 import {
   ArrowRight,
   Sparkles,
@@ -23,12 +24,13 @@ import {
 } from 'lucide-react'
 
 export const metadata: Metadata = {
-  title: 'Free Discord Community for Developers & Gamers in India',
-  description:
-    'Join OpenBox, a free multi-server Discord community for developers, gamers, and students in India. Explore our servers, attend events, and connect with peers.',
+  title: {
+    absolute: 'Open Box Community | Free Discord for Developers, Gamers & Students in India',
+  },
+  description: 'Join Open Box, a free multi-server Discord community for developers, gamers and students in India. Explore Junction, OB Dev and OB GG, and join events.',
   keywords: [
-    'OpenBox',
     'Open Box',
+    'Open Box Community',
     'Discord community India',
     'developer community',
     'gaming server India',
@@ -38,8 +40,6 @@ export const metadata: Metadata = {
     'indian developers discord',
     'indian gamers discord',
     'yes',
-    'openbox',
-    'openbox email'
   ],
   alternates: { canonical: '/' },
 }
@@ -49,55 +49,14 @@ const jsonLd = {
   '@graph': [
     {
       '@type': 'WebPage',
-      '@id': 'https://openboxcomm.in/#webpage',
-      url: 'https://openboxcomm.in',
-      name: 'Free Discord Community for Developers & Gamers in India',
-      description:
-        'OpenBox is a free multi-server Discord community for developers, gamers, and students in India.',
-      isPartOf: { '@id': 'https://openboxcomm.in/#website' },
-      about: { '@id': 'https://openboxcomm.in/#organization' },
-      publisher: { '@id': 'https://openboxcomm.in/#organization' },
-      datePublished: '2021-01-01',
-      dateModified: '2026-07-31',
+      '@id': `${SITE_URL}/#webpage`,
+      url: SITE_URL,
+      name: 'Open Box Community | Free Discord for Developers, Gamers & Students in India',
+      description: 'Join Open Box, a free multi-server Discord community for developers, gamers and students in India. Explore Junction, OB Dev and OB GG, and join events.',
+      isPartOf: { '@id': `${SITE_URL}/#website` },
+      about: { '@id': `${SITE_URL}/#organization` },
+      publisher: { '@id': `${SITE_URL}/#organization` },
       inLanguage: 'en-IN',
-    },
-    {
-      '@type': 'FAQPage',
-      '@id': 'https://openboxcomm.in/#faq',
-      mainEntity: [
-        {
-          '@type': 'Question',
-          name: 'What is OpenBox?',
-          acceptedAnswer: {
-            '@type': 'Answer',
-            text: 'OpenBox is a free multi-server Discord community platform for developers, gamers, and students in India. It offers specialized servers for coding collaboration, gaming sessions, and study groups.',
-          },
-        },
-        {
-          '@type': 'Question',
-          name: 'How to join OpenBox?',
-          acceptedAnswer: {
-            '@type': 'Answer',
-            text: 'You can join OpenBox by visiting openboxcomm.in/join or choosing a server from our directory. Click any server invite link to connect with our Discord community instantly.',
-          },
-        },
-        {
-          '@type': 'Question',
-          name: 'Is OpenBox free to join?',
-          acceptedAnswer: {
-            '@type': 'Answer',
-            text: 'Yes, OpenBox is 100% free to join with no subscription fees, hidden charges, or gatekeeping for developers, gamers, and students.',
-          },
-        },
-        {
-          '@type': 'Question',
-          name: 'Who is OpenBox for?',
-          acceptedAnswer: {
-            '@type': 'Answer',
-            text: 'OpenBox is built for developers, coders, gamers, students, and tech enthusiasts in India looking to collaborate, play together, and grow their skills.',
-          },
-        },
-      ],
     },
   ],
 }
@@ -129,7 +88,7 @@ export default function Home() {
 
             {/* Key Takeaway & Hero Summary */}
             <p className="mt-6 max-w-3xl text-lg leading-relaxed text-muted-foreground">
-              OpenBox is a free, multi-server Discord platform connecting developers, coders, gamers, and students across India. It brings together dedicated server hubs for collaborative projects, gaming sessions, skill development, study, and peer connections, all without entry barriers. Just find the community that fits and jump in.
+              Open Box is a free, multi-server Discord platform connecting developers, coders, gamers, and students across India. It brings together dedicated server hubs for collaborative projects, gaming sessions, skill development, study, and peer connections, all without entry barriers. Just find the community that fits and jump in.
             </p>
 
             <div className="mt-8 flex flex-wrap items-center gap-3">
@@ -184,13 +143,13 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Overview & Feature Pillars (What is OpenBox?) */}
+      {/* Overview & Feature Pillars (What is Open Box?) */}
       <section className="border-b border-border bg-surface/40 py-16 sm:py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mb-12">
-            <h2 className="text-3xl font-extrabold tracking-tight sm:text-4xl">What is OpenBox?</h2>
+            <h2 className="text-3xl font-extrabold tracking-tight sm:text-4xl">What is Open Box?</h2>
             <p className="mt-4 text-base leading-relaxed text-muted-foreground sm:text-lg">
-              OpenBox is a free multi-server Discord community for developers, gamers, and students in India. We bring together passionate builders, competitive gamers, and ambitious learners across dedicated server hubs. Members get access to active project collaboration, gaming voice channels, peer mentorship, and regular community events.
+              Open Box is a free multi-server Discord community for developers, gamers, and students in India. We bring together passionate builders, competitive gamers, and ambitious learners across dedicated server hubs. Members get access to active project collaboration, gaming voice channels, peer mentorship, and regular community events.
             </p>
           </div>
 
@@ -239,13 +198,13 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Onboarding Flow (How to join OpenBox?) */}
+      {/* Onboarding Flow (How to join Open Box?) */}
       <section className="border-b border-border py-16 sm:py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mb-12">
-            <h2 className="text-3xl font-extrabold tracking-tight sm:text-4xl">How to join OpenBox?</h2>
+            <h2 className="text-3xl font-extrabold tracking-tight sm:text-4xl">How to join Open Box?</h2>
             <p className="mt-4 text-base leading-relaxed text-muted-foreground sm:text-lg">
-              Joining OpenBox is simple, free, and takes less than a minute. Explore our server directory below, choose the community hub that matches your interests, and click the invite link to join our Discord server. Once inside, introduce yourself in the welcome channel and start chatting with fellow members right away.
+              Joining Open Box is simple, free, and takes less than a minute. Explore our server directory below, choose the community hub that matches your interests, and click the invite link to join our Discord server. Once inside, introduce yourself in the welcome channel and start chatting with fellow members right away.
             </p>
           </div>
 
@@ -301,36 +260,36 @@ export default function Home() {
           <div className="text-center mb-12">
             <h2 className="text-3xl font-extrabold tracking-tight sm:text-4xl">Frequently Asked Questions</h2>
             <p className="mt-3 text-muted-foreground text-base max-w-2xl mx-auto">
-              Quick answers to common questions about the OpenBox Discord community in India.
+              Quick answers to common questions about the Open Box Discord community in India.
             </p>
           </div>
 
           <div className="grid gap-6 sm:grid-cols-2">
             <div className="rounded-xl border border-border bg-background p-6">
-              <h3 className="font-bold text-lg text-foreground mb-2">What is OpenBox?</h3>
+              <h3 className="font-bold text-lg text-foreground mb-2">What is Open Box?</h3>
               <p className="text-sm leading-relaxed text-muted-foreground">
-                OpenBox is a free multi-server Discord community platform for developers, gamers, and students in India. It offers specialized servers for coding collaboration, gaming sessions, and study groups.
+                Open Box is a free multi-server Discord community platform for developers, gamers, and students in India. It offers specialized servers for coding collaboration, gaming sessions, and study groups.
               </p>
             </div>
 
             <div className="rounded-xl border border-border bg-background p-6">
-              <h3 className="font-bold text-lg text-foreground mb-2">How to join OpenBox?</h3>
+              <h3 className="font-bold text-lg text-foreground mb-2">How to join Open Box?</h3>
               <p className="text-sm leading-relaxed text-muted-foreground">
-                You can join OpenBox by visiting openboxcomm.in/join or choosing a server from our directory. Click any server invite link to connect with our Discord community instantly.
+                You can join Open Box by visiting openboxcomm.in/join or choosing a server from our directory. Click any server invite link to connect with our Discord community instantly.
               </p>
             </div>
 
             <div className="rounded-xl border border-border bg-background p-6">
-              <h3 className="font-bold text-lg text-foreground mb-2">Is OpenBox free to join?</h3>
+              <h3 className="font-bold text-lg text-foreground mb-2">Is Open Box free to join?</h3>
               <p className="text-sm leading-relaxed text-muted-foreground">
-                Yes, OpenBox is 100% free to join with no subscription fees, hidden charges, or gatekeeping for developers, gamers, and students.
+                Yes, Open Box is 100% free to join with no subscription fees, hidden charges, or gatekeeping for developers, gamers, and students.
               </p>
             </div>
 
             <div className="rounded-xl border border-border bg-background p-6">
-              <h3 className="font-bold text-lg text-foreground mb-2">Who is OpenBox for?</h3>
+              <h3 className="font-bold text-lg text-foreground mb-2">Who is Open Box for?</h3>
               <p className="text-sm leading-relaxed text-muted-foreground">
-                OpenBox is built for developers, coders, gamers, students, and tech enthusiasts in India looking to collaborate, play together, and grow their skills.
+                Open Box is built for developers, coders, gamers, students, and tech enthusiasts in India looking to collaborate, play together, and grow their skills.
               </p>
             </div>
           </div>
