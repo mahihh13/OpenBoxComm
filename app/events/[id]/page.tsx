@@ -20,6 +20,7 @@ import { EventCTAButton } from '@/components/EventCTAButton'
 import { SponsorsMarquee, getSponsorGroupLabel } from '@/components/SponsorsMarquee'
 import { EventContentTabs } from '@/components/EventContentTabs'
 import { TTSPlayer } from '@/components/TTSPlayer'
+import { Sparkles } from 'lucide-react'
 
 export function generateStaticParams() {
   return events.map((event) => ({ id: event.id }))
@@ -155,7 +156,8 @@ export default async function EventDetailPage({
 
                   {sponsors.length > 0 && (
                     <span className="inline-flex items-center gap-1.5 rounded-full border border-yellow-500/30 bg-yellow-500/10 px-3 py-1 text-xs font-semibold text-yellow-600 dark:text-yellow-400">
-                      ✦ {getSponsorGroupLabel(sponsors)}
+                      <Sparkles className="h-3.5 w-3.5" aria-hidden="true" />
+                      {getSponsorGroupLabel(sponsors)}
                     </span>
                   )}
 

@@ -82,16 +82,16 @@ export function Footer() {
     },
     {
       name: 'Discord',
-      href: socialProfiles.discord,
+      href: '/servers',
       icon: <DiscordIcon />,
       id: 'footer-discord',
     },
-    {
-      name: 'GitHub',
-      href: socialProfiles.github,
-      icon: <GithubIcon className="h-5 w-5" />,
-      id: 'footer-github',
-    },
+    // {
+    //   name: 'GitHub',
+    //   href: socialProfiles.github,
+    //   icon: <GithubIcon className="h-5 w-5" />,
+    //   id: 'footer-github',
+    // },
     {
       name: 'LinkedIn',
       href: socialProfiles.linkedin,
@@ -169,10 +169,10 @@ export function Footer() {
 
           <nav aria-label="Legal" className="col-span-2">
             <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider text-foreground">Legal</h3>
-            <ul className="grid grid-cols-2 gap-x-6 gap-y-2.5 text-[15px]">
+            <ul className="grid min-w-0 grid-cols-1 gap-y-2.5 text-[15px] sm:grid-cols-2 sm:gap-x-6">
               {legalLinks.map((l) => (
-                <li key={l.href}>
-                  <Link href={l.href} className="text-muted-foreground transition-colors duration-150 hover:text-cyan-500">
+                <li key={l.href} className="min-w-0">
+                  <Link href={l.href} className="break-words text-muted-foreground transition-colors duration-150 hover:text-cyan-500">
                     {l.label}
                   </Link>
                 </li>

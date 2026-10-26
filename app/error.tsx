@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 import { useEffect } from 'react'
+import { Zap } from 'lucide-react'
 
 interface ErrorPageProps {
   error: Error & { digest?: string }
@@ -22,9 +23,13 @@ export default function GlobalError({ error, reset }: ErrorPageProps) {
   return (
     <div className="flex min-h-[80vh] flex-col items-center justify-center px-4 text-center">
       <div className="relative mb-8 select-none">
-        <span className="text-[10rem] font-extrabold leading-none text-white/[0.04] sm:text-[14rem]">
-          {isNetworkError ? '⚡' : '500'}
-        </span>
+        {isNetworkError ? (
+          <Zap className="h-40 w-40 text-white/[0.04] sm:h-56 sm:w-56" aria-hidden="true" />
+        ) : (
+          <span className="text-[10rem] font-extrabold leading-none text-white/[0.04] sm:text-[14rem]">
+            500
+          </span>
+        )}
         <div className="absolute inset-0 flex items-center justify-center">
           <div className="rounded-2xl border border-white/10 bg-gradient-to-br from-white/[0.07] to-rose-400/[0.08] px-8 py-6">
             <p className="text-sm font-semibold uppercase tracking-[0.18em] text-rose-300 mb-2">

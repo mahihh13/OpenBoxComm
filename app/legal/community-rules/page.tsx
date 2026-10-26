@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import { AlertTriangle } from 'lucide-react'
 
 export const metadata: Metadata = {
   title: 'Community Rules',
@@ -59,7 +60,7 @@ export default function CommunityRulesPage() {
       </ul>
 
       <div className="rounded-lg border border-border bg-yellow-500/10 p-4 mb-6">
-        <strong>⚠️ Legal Note:</strong> Content that violates Indian law will result in an immediate permanent
+        <strong className="inline-flex items-center gap-2"><AlertTriangle className="h-4 w-4" aria-hidden="true" />Legal Note:</strong> Content that violates Indian law will result in an immediate permanent
         ban from all Open Box platforms and may be reported to the appropriate law enforcement authorities.
       </div>
 

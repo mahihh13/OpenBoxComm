@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import { AlertTriangle } from 'lucide-react'
 
 export const metadata: Metadata = {
   title: 'Acceptable Use Policy',
@@ -29,7 +30,7 @@ export default function AcceptableUsePolicyPage() {
           background: 'rgba(255,200,0,0.06)',
         }}
       >
-        <strong>⚠️ Legal Note:</strong> Violations of Indian law will result in an immediate permanent ban
+        <strong className="inline-flex items-center gap-2"><AlertTriangle className="h-4 w-4" aria-hidden="true" />Legal Note:</strong> Violations of Indian law will result in an immediate permanent ban
         from all Open Box platforms and may be reported to law enforcement authorities.
       </div>
 

@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { usePathname } from 'next/navigation'
-import { Heart, Menu, X, Sun, Moon, ArrowRight } from 'lucide-react'
+import { Heart, Menu, X, Sun, Moon, ArrowRight, Smile, Zap, Wind, Ghost } from 'lucide-react'
 import { useTheme } from 'next-themes'
 import {
   DropdownMenu,
@@ -103,7 +103,7 @@ function ThemeToggle({
 
       {tease && (
         <div className="absolute top-12 right-0 z-50 w-64 animate-in fade-in slide-in-from-top-2 duration-300 bg-background border border-border rounded-xl shadow-xl p-4">
-          <p className="text-3xl mb-1">🙃</p>
+          <Smile className="mb-1 h-8 w-8 text-cyan-500" aria-hidden="true" />
           <p className="text-base font-bold text-foreground mb-1">bro are you sure?</p>
           <p className="text-xs text-muted-foreground mb-4">light mode? really? on purpose??</p>
           <div className="flex gap-2">
@@ -111,13 +111,19 @@ function ThemeToggle({
               onClick={handleYes}
               className="flex-1 rounded-lg bg-cyan-500 hover:bg-cyan-600 text-black text-sm font-bold py-1.5 transition-colors"
             >
-              yes 💥
+              <span className="inline-flex items-center justify-center gap-1.5">
+                <Zap className="h-3.5 w-3.5" aria-hidden="true" />
+                Yes
+              </span>
             </button>
             <button
               onClick={handleNo}
               className="flex-1 rounded-lg bg-accent hover:bg-accent/80 text-foreground text-sm font-bold py-1.5 transition-colors"
             >
-              no 😮‍💨
+              <span className="inline-flex items-center justify-center gap-1.5">
+                <Wind className="h-3.5 w-3.5" aria-hidden="true" />
+                No
+              </span>
             </button>
           </div>
         </div>
@@ -328,16 +334,18 @@ export function Navbar() {
       {/* Render the fixed toasts completely outside the fixed <nav> block */}
       {darkToast && (
         <div className="fixed top-20 left-1/2 z-[1000] w-[90%] max-w-sm -translate-x-1/2 rounded-xl border border-border bg-background/95 p-3.5 text-center shadow-2xl backdrop-blur supports-[backdrop-filter]:bg-background/85 animate-in fade-in slide-in-from-top-4 duration-300 md:right-6 md:left-auto md:translate-x-0 md:w-auto md:max-w-none md:text-left">
-          <span className="text-sm font-bold text-foreground sm:text-base whitespace-normal md:whitespace-nowrap">
-            Welcome back to the dark side 👾
+          <span className="inline-flex items-center gap-2 text-sm font-bold text-foreground sm:text-base whitespace-normal md:whitespace-nowrap">
+            Welcome back to the dark side
+            <Ghost className="h-4 w-4 shrink-0" aria-hidden="true" />
           </span>
         </div>
       )}
 
       {showSuggestion && (
         <div className="fixed top-20 left-1/2 z-[1000] w-[90%] max-w-sm -translate-x-1/2 rounded-xl border border-border bg-background/95 p-4 text-center shadow-2xl backdrop-blur supports-[backdrop-filter]:bg-background/85 animate-in fade-in slide-in-from-top-4 duration-300 md:right-6 md:left-auto md:translate-x-0 md:w-64 md:text-left">
-          <p className="text-sm font-bold text-foreground mb-2">
-            System is in light mode? ☀️
+          <p className="mb-2 flex items-center gap-2 text-sm font-bold text-foreground">
+            <Sun className="h-4 w-4" aria-hidden="true" />
+            System is in light mode?
           </p>
           <p className="text-xs text-muted-foreground mb-3 leading-relaxed">
             The dark side looks way better! Switch now?
@@ -347,7 +355,10 @@ export function Navbar() {
               onClick={handleToggleSuggestion}
               className="flex-1 rounded-lg bg-cyan-500 hover:bg-cyan-600 text-black text-xs font-bold py-1.5 transition-colors"
             >
-              Toggle 🌙
+              <span className="inline-flex items-center justify-center gap-1.5">
+                Toggle
+                <Moon className="h-3.5 w-3.5" aria-hidden="true" />
+              </span>
             </button>
             <button
               onClick={handleDismissSuggestion}

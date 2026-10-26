@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { Mail, Megaphone, MapPin, Clock, ArrowRight, Sparkles, TrendingUp, HelpCircle, Heart, Sparkle } from 'lucide-react'
+import { Mail, Megaphone, MapPin, Clock, ArrowRight, Sparkles, TrendingUp, HelpCircle, Heart, Sparkle, Check } from 'lucide-react'
 import { notFound } from 'next/navigation'
 
 export async function generateMetadata({
@@ -257,19 +257,19 @@ export default function CareersPage() {
 
                                 <ul className="space-y-3 text-foreground/90 font-medium">
                                     <li className="flex items-start gap-2.5">
-                                        <span className="text-cyan-500 font-bold mt-0.5">✔</span>
+                                        <Check className="mt-0.5 h-4 w-4 shrink-0 text-cyan-500" aria-hidden="true" />
                                         <span>Your resume or professional background</span>
                                     </li>
                                     <li className="flex items-start gap-2.5">
-                                        <span className="text-cyan-500 font-bold mt-0.5">✔</span>
+                                        <Check className="mt-0.5 h-4 w-4 shrink-0 text-cyan-500" aria-hidden="true" />
                                         <span>Portfolio or links to accounts/work</span>
                                     </li>
                                     <li className="flex items-start gap-2.5">
-                                        <span className="text-cyan-500 font-bold mt-0.5">✔</span>
+                                        <Check className="mt-0.5 h-4 w-4 shrink-0 text-cyan-500" aria-hidden="true" />
                                         <span>Your Discord handle</span>
                                     </li>
                                     <li className="flex items-start gap-2.5">
-                                        <span className="text-cyan-500 font-bold mt-0.5">✔</span>
+                                        <Check className="mt-0.5 h-4 w-4 shrink-0 text-cyan-500" aria-hidden="true" />
                                         <span>Why you'd be a great fit for Open Box</span>
                                     </li>
                                 </ul>

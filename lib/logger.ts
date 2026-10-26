@@ -129,7 +129,7 @@ export const logger = {
   setEnabled: (enabled: boolean): void => {
     if (typeof window === 'undefined') return
     ;(window as unknown as Record<string, unknown>)['__OB_LOGGING__'] = enabled
-    console.log(`[OB:LOGGER] Logging ${enabled ? 'enabled ✅' : 'disabled 🔇'}`)
+    console.log(`[OB:LOGGER] Logging ${enabled ? 'enabled' : 'disabled'}`)
   },
 }
 

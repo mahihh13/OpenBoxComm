@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
+import { Cookie, X } from 'lucide-react'
 import { useConsent } from '@/lib/hooks/useConsent'
 
 export function ConsentBanner() {
@@ -33,20 +34,23 @@ export function ConsentBanner() {
         }`}
     >
       <div className="rounded-xl border border-border bg-surface/95 backdrop-blur-md shadow-lg px-4 py-3 flex flex-col sm:flex-row sm:items-center gap-3">
-        <p className="text-xs text-muted-foreground leading-relaxed flex-1">
-          🍪 By using this site you agree to our{' '}
-          <Link href="/legal/terms-and-conditions" target="_blank" className="underline hover:text-foreground transition-colors">
-            Terms
-          </Link>
-          ,{' '}
-          <Link href="/legal/privacy-policy" target="_blank" className="underline hover:text-foreground transition-colors">
-            Privacy Policy
-          </Link>
-          , and{' '}
-          <Link href="/legal/cookie-policy" target="_blank" className="underline hover:text-foreground transition-colors">
-            Cookie Policy
-          </Link>
-          .
+        <p className="flex flex-1 items-start gap-2 text-xs leading-relaxed text-muted-foreground">
+          <Cookie className="mt-0.5 h-4 w-4 shrink-0" aria-hidden="true" />
+          <span>
+            By using this site you agree to our{' '}
+            <Link href="/legal/terms-and-conditions" target="_blank" className="underline hover:text-foreground transition-colors">
+              Terms
+            </Link>
+            ,{' '}
+            <Link href="/legal/privacy-policy" target="_blank" className="underline hover:text-foreground transition-colors">
+              Privacy Policy
+            </Link>
+            , and{' '}
+            <Link href="/legal/cookie-policy" target="_blank" className="underline hover:text-foreground transition-colors">
+              Cookie Policy
+            </Link>
+            .
+          </span>
         </p>
         <div className="flex items-center gap-2 shrink-0">
           <button
@@ -64,9 +68,9 @@ export function ConsentBanner() {
           <button
             onClick={() => animateOut(() => setDismissed(true))}
             aria-label="Dismiss"
-            className="text-muted-foreground hover:text-foreground transition-colors text-lg leading-none"
+            className="text-muted-foreground transition-colors hover:text-foreground"
           >
-            ✕
+            <X className="h-4 w-4" aria-hidden="true" />
           </button>
         </div>
       </div>

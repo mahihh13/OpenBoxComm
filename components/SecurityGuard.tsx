@@ -16,6 +16,7 @@
  */
 
 import { useEffect, useRef, useState } from 'react'
+import { LockKeyhole, X } from 'lucide-react'
 
 const IS_PROD = process.env.NODE_ENV === 'production'
 
@@ -116,7 +117,7 @@ export function SecurityGuard() {
           className="fixed bottom-6 left-1/2 z-[99999] -translate-x-1/2 animate-in fade-in slide-in-from-bottom-4 duration-300"
         >
           <div className="flex items-center gap-3 rounded-2xl border border-border bg-background/95 px-5 py-3.5 shadow-2xl backdrop-blur-xl ring-1 ring-inset ring-white/5">
-            <span className="text-xl">🔒</span>
+            <LockKeyhole className="h-5 w-5 text-muted-foreground" aria-hidden="true" />
             <div>
               <p className="text-sm font-bold text-foreground">Inspection not allowed</p>
               <p className="text-xs text-muted-foreground">This site is protected. Please respect our content.</p>
@@ -126,7 +127,7 @@ export function SecurityGuard() {
               aria-label="Dismiss warning"
               className="ml-2 rounded-lg p-1.5 text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
             >
-              ✕
+              <X className="h-4 w-4" aria-hidden="true" />
             </button>
           </div>
         </div>

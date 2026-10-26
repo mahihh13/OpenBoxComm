@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import { AlertTriangle } from 'lucide-react'
 
 export const metadata: Metadata = {
   title: 'Event Policy',
@@ -77,7 +78,7 @@ export default function EventPolicyPage() {
           background: 'rgba(255,200,0,0.06)',
         }}
       >
-        <strong>⚠️ In-Person Events:</strong> Open Box events are community-run and provided in good faith. We
+        <strong className="inline-flex items-center gap-2"><AlertTriangle className="h-4 w-4" aria-hidden="true" />In-Person Events:</strong> Open Box events are community-run and provided in good faith. We
         are not liable for loss, damage, or injury at or in connection with in-person events. Participants
         attend at their own risk and are responsible for their own travel and safety.
       </div>
