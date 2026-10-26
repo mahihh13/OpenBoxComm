@@ -184,7 +184,7 @@ export function Footer() {
         {/* Social row, centered */}
         <section aria-label="Social links" className="mt-10 space-y-3 text-center">
           <p className="text-sm font-semibold uppercase tracking-wider text-foreground">Connect With Us</p>
-          <div className="flex flex-wrap justify-center gap-3 sm:flex-nowrap">
+          <div className="flex flex-wrap justify-center gap-8 sm:flex-nowrap">
             {socialLinks.map((s) => (
               <a
                 key={s.id}
