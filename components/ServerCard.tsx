@@ -1,15 +1,14 @@
-import { ExternalLink, Users } from 'lucide-react'
+import { ExternalLink } from 'lucide-react'
 import Link from 'next/link'
 
 interface ServerCardProps {
   name: string
   description: string
-  memberCount?: number
   inviteUrl: string
   icon?: string
 }
 
-export function ServerCard({ name, description, memberCount, inviteUrl, icon }: ServerCardProps) {
+export function ServerCard({ name, description, inviteUrl, icon }: ServerCardProps) {
   return (
     <div className="group rounded-lg border border-border bg-card p-6 hover:shadow-md transition-shadow flex flex-col">
       <div className="flex items-start justify-between gap-4 mb-4">
@@ -20,12 +19,6 @@ export function ServerCard({ name, description, memberCount, inviteUrl, icon }: 
       </div>
       <p className="text-sm text-muted-foreground flex-grow mb-4">{description}</p>
       <div className="flex items-center justify-between">
-        {memberCount && (
-          <div className="flex items-center gap-1 text-xs text-muted-foreground">
-            <Users className="w-4 h-4" />
-            <span>{memberCount.toLocaleString()}</span>
-          </div>
-        )}
         <Link
           href={inviteUrl}
           target="_blank"

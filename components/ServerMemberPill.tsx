@@ -5,12 +5,12 @@ import { useDiscordMembers } from "@/lib/hooks/useDiscordMembers";
 
 interface ServerMemberPillProps {
   slug: string;
-  initialCount: number;
 }
 
-export function ServerMemberPill({ slug, initialCount }: ServerMemberPillProps) {
+export function ServerMemberPill({ slug }: ServerMemberPillProps) {
   const counts = useDiscordMembers(slug);
-  const count = counts[slug] || initialCount;
+  const count = counts[slug];
+  if (count === undefined) return null;
 
   return (
     <div className="flex flex-col items-center rounded-2xl border border-border bg-surface px-6 py-4 text-center shadow-lg">

@@ -2,14 +2,11 @@
 
 import { useState, useEffect } from 'react';
 import { servers } from '@/lib/community-data';
+import { SERVER_MEMBER_COUNTS } from '@/lib/server-member-counts';
 
 export function useDiscordMembers(targetSlug?: string) {
   const [counts, setCounts] = useState<Record<string, number>>(() => {
-    const initial: Record<string, number> = {};
-    servers.forEach(s => {
-      initial[s.slug] = s.memberCount;
-    });
-    return initial;
+    return { ...SERVER_MEMBER_COUNTS };
   });
 
   useEffect(() => {

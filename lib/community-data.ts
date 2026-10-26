@@ -39,7 +39,6 @@ export interface Servers {
   description: string
   longDescription?: string
   tags: string[]
-  memberCount: number
   isLive: boolean
   accent: string
   channels?: string[]
@@ -86,7 +85,6 @@ export const servers: Servers[] = [
     longDescription:
       'Jn. is the friendly front door of Open Box. Bring a rough idea, ask for feedback, share your wins, or find people who want to build alongside you.',
     tags: ['community', 'showcase', 'feedback'],
-    memberCount: 99,
     isLive: true,
     accent: 'bg-black/90',
     channels: ['OB Jn FEEDs', 'Notification', 'Forms', 'System'],
@@ -101,7 +99,6 @@ export const servers: Servers[] = [
     longDescription:
       'Dev is for bringing devs together. Pair on bugs, review architecture, share resources, and turn scattered notes into working projects.',
     tags: ['development', 'open-source', 'Showoff'],
-    memberCount: 99,
     isLive: true,
     accent: 'bg-emerald-950',
     channels: ['Dev & Projects', 'Knowledge Base', 'Events', 'Career'],
@@ -116,7 +113,6 @@ export const servers: Servers[] = [
     longDescription:
       'GG is where play and building meet. Join casual sessions, organize tournament squads, talk game design, and find collaborators for prototypes.',
     tags: ['gaming', 'tournaments', 'fun', 'flex'],
-    memberCount: 99,
     isLive: true,
     accent: 'bg-red-950',
     channels: ['Battle Royal', 'Open world', 'Story line', 'Competitive', 'Casual'],
@@ -472,7 +468,7 @@ export const blogs: Blog[] = [
     title: 'Where We Go From Here',
     server: 'OB Team',
     date: '2026-06-29',
-    excerpt: 'OpenBox has gone from a club side-project to its own independent community. Here is what we are focused on next and what we want to build with you.',
+    excerpt: 'Open Box has gone from a club side-project to its own independent community. Here is what we are focused on next and what we want to build with you.',
     readTime: '2 min read',
     authorId: 'mahi-hh',
   },
@@ -481,7 +477,7 @@ export const blogs: Blog[] = [
     title: 'OB GG Is in Beta',
     server: 'OB GG',
     date: '2026-06-29',
-    excerpt: 'OB GG is our gaming server. We built it to bring more people into the OpenBox world and give gamers in the community a dedicated home. It is live now in beta.',
+    excerpt: 'OB GG is our gaming server. We built it to bring more people into the Open Box world and give gamers in the community a dedicated home. It is live now in beta.',
     readTime: '2 min read',
     authorId: 'mahi-hh',
   },
@@ -508,7 +504,7 @@ export const blogs: Blog[] = [
     title: 'How We Started',
     server: 'Story',
     date: '2026-06-29',
-    excerpt: 'OpenBox started as part of a college club. Then things changed, we split off, and built something of our own. Here is the honest version of that story.',
+    excerpt: 'Open Box started as part of a college club. Then things changed, we split off, and built something of our own. Here is the honest version of that story.',
     readTime: '2 min read',
     authorId: 'mahi-hh',
   },

@@ -1,4 +1,5 @@
 import { notFound } from 'next/navigation'
+import type { Metadata } from 'next'
 import Link from 'next/link'
 import Image from 'next/image'
 import { BookOpen, Calendar, FileText, Users, Hash, Shield } from 'lucide-react'
@@ -22,6 +23,22 @@ const DOC_SLUG_MAP: Record<string, string> = {
 
 export async function generateStaticParams() {
   return servers.filter((s) => s.isLive).map((s) => ({ slug: s.slug }))
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>
+}): Promise<Metadata> {
+  const { slug } = await params
+  const server = getServer(slug)
+  if (!server || !server.isLive) return {}
+
+  return {
+    title: `${server.name} Discord Server`,
+    description: `Join ${server.name} in Open Box: ${server.description}`,
+    alternates: { canonical: `/servers/${slug}` },
+  }
 }
 
 export default async function ServerPage({
@@ -81,7 +98,7 @@ export default async function ServerPage({
               </div>
 
               {/* Members pill */}
-              <ServerMemberPill slug={server.slug} initialCount={server.memberCount} />
+              <ServerMemberPill slug={server.slug} />
             </div>
           </div>
         </div>

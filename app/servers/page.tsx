@@ -7,7 +7,7 @@ import { ServerMemberCountInline } from '@/components/ServerMemberCountInline'
 import { LayoutGrid, ArrowRight } from 'lucide-react'
 
 export const metadata: Metadata = {
-  title: 'Servers',
+  title: 'Discord Servers',
   description: 'Browse all Open Box Discord servers — from gaming and development to study groups and networking. Free to join.',
   alternates: { canonical: '/servers' },
 }
@@ -60,8 +60,8 @@ export default function ServersPage() {
                     </Badge>
                   ))}
                 </div>
-                {server.memberCount > 0 && (
-                  <ServerMemberCountInline slug={server.slug} initialCount={server.memberCount} />
+                {server.isLive && (
+                  <ServerMemberCountInline slug={server.slug} />
                 )}
                 <div className="mt-4 flex items-center gap-1 text-xs font-semibold text-cyan-500 opacity-0 group-hover:opacity-100 transition-opacity">
                   Visit Server <ArrowRight className="h-3.5 w-3.5" />

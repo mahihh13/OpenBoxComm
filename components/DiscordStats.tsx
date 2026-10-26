@@ -17,12 +17,14 @@ export function DiscordStats() {
             <span className="text-sm font-semibold text-foreground">{server.name}</span>
             <span className="text-xs text-muted-foreground capitalize">{server.tags[0] || 'Community'}</span>
           </div>
-          <div className="flex items-center gap-1.5">
-            <span className="text-lg font-bold text-emerald-500">
-              {(memberCounts[server.slug] || server.memberCount).toLocaleString()}
-            </span>
-            <span className="text-xs text-emerald-500/70">members</span>
-          </div>
+          {memberCounts[server.slug] !== undefined && (
+            <div className="flex items-center gap-1.5">
+              <span className="text-lg font-bold text-emerald-500">
+                {memberCounts[server.slug].toLocaleString()}
+              </span>
+              <span className="text-xs text-emerald-500/70">members</span>
+            </div>
+          )}
         </div>
       ))}
     </div>

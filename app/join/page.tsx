@@ -12,7 +12,7 @@ import { ScrollToSection } from '@/components/ScrollToSection'
 
 
 export const metadata: Metadata = {
-  title: 'Join Open Box',
+  title: 'Join the Community',
   description: 'Open Box is a free Discord community for developers, builders, gamers, and students. Pick a server and jump in.',
   alternates: { canonical: '/join' },
 }
@@ -120,7 +120,7 @@ export default function JoinPage() {
               <h2 className="font-heading text-3xl font-bold tracking-tight md:text-4xl">{featured.name}</h2>
               <p className="max-w-md text-muted-foreground md:text-lg">{featured.description}</p>
               {featured.isLive && (
-                <ServerMemberCountInline slug={featured.slug} initialCount={featured.memberCount} />
+                <ServerMemberCountInline slug={featured.slug} />
               )}
             </div>
             <div className="shrink-0">
@@ -159,8 +159,8 @@ export default function JoinPage() {
                   </CardDescription>
                 </CardHeader>
                 <CardContent className="mt-auto">
-                  {server.isLive && server.memberCount > 0 && (
-                    <ServerMemberCountInline slug={server.slug} initialCount={server.memberCount} />
+                  {server.isLive && (
+                    <ServerMemberCountInline slug={server.slug} />
                   )}
                 </CardContent>
                 <CardFooter>

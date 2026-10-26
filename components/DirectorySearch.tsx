@@ -69,8 +69,8 @@ export function DirectorySearch() {
                     </Badge>
                   ))}
                 </div>
-                {server.isLive && server.memberCount > 0 && (
-                  <ServerMemberCountInline slug={server.slug} initialCount={server.memberCount} />
+                {server.isLive && (
+                  <ServerMemberCountInline slug={server.slug} />
                 )}
               </CardContent>
               <CardFooter>
