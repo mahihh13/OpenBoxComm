@@ -1,5 +1,4 @@
 import Link from 'next/link'
-import Image from 'next/image'
 import { GithubIcon, Linkedin } from 'lucide-react'
 import { socialProfiles } from '@/lib/seo'
 
@@ -126,55 +125,12 @@ export function Footer() {
 
   return (
     <footer className="border-t border-border bg-surface">
-      <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8">
-        {/* Main Footer Content */}
-        <div className="grid grid-cols-1 gap-y-10 gap-x-8 md:grid-cols-2 lg:grid-cols-12 mb-10 sm:mb-12">
-          {/* Brand Section - Spans 3 columns */}
-          <div className="lg:col-span-3">
-            <div className="mb-6">
-              <div className="flex items-center gap-3 mb-4">
-                <div className="relative h-10 w-10 overflow-hidden rounded-lg flex-shrink-0">
-                  <Image
-                    src="/images/OB.png"
-                    alt="Open Box logo"
-                    fill
-                    sizes="40px"
-                    className="object-cover"
-                  />
-                </div>
-                <span className="text-xl font-heading font-bold tracking-tight">Open Box</span>
-              </div>
-              <p className="text-sm text-muted-foreground leading-relaxed max-w-xs">
-                Free communities for gaming, development, learning, and connecting.
-              </p>
-            </div>
-
-            {/* Social Links */}
-            <div className="space-y-4">
-              <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Connect With Us</p>
-              <div className="flex flex-wrap gap-2.5 sm:gap-3">
-                {socialLinks.map((s) => (
-                  <a
-                    key={s.id}
-                    id={s.id}
-                    href={s.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={s.name}
-                    title={s.name}
-                    className="h-10 w-10 flex items-center justify-center rounded-lg border border-border text-muted-foreground transition-all duration-200 hover:border-cyan-500 hover:bg-cyan-500/10 hover:text-cyan-500"
-                  >
-                    {s.icon}
-                  </a>
-                ))}
-              </div>
-            </div>
-          </div>
-
-          {/* Navigate */}
-          <div className="lg:col-span-2">
-            <h3 className="text-sm font-semibold mb-5 text-foreground uppercase tracking-wider">Navigate</h3>
-            <ul className="space-y-3 text-sm">
+      <div className="mx-auto max-w-7xl px-4 pt-12 sm:px-6 lg:px-8">
+        {/* Top row: all link columns on a single line */}
+        <div className="grid grid-cols-2 gap-x-8 gap-y-8 md:grid-cols-4">
+          <nav aria-label="Navigate">
+            <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider text-foreground">Navigate</h3>
+            <ul className="space-y-2.5 text-[15px]">
               {[
                 { label: 'Home', href: '/' },
                 { label: 'About', href: '/about' },
@@ -184,18 +140,17 @@ export function Footer() {
                 { label: 'Docs', href: '/doc' },
               ].map((l) => (
                 <li key={l.href}>
-                  <Link href={l.href} className="text-muted-foreground hover:text-cyan-500 transition-colors duration-150">
+                  <Link href={l.href} className="text-muted-foreground transition-colors duration-150 hover:text-cyan-500">
                     {l.label}
                   </Link>
                 </li>
               ))}
             </ul>
-          </div>
+          </nav>
 
-          {/* Community */}
-          <div className="lg:col-span-2">
-            <h3 className="text-sm font-semibold mb-5 text-foreground uppercase tracking-wider">Community</h3>
-            <ul className="space-y-3 text-sm">
+          <nav aria-label="Community">
+            <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider text-foreground">Community</h3>
+            <ul className="space-y-2.5 text-[15px]">
               {[
                 { label: 'Support Us', href: '/support' },
                 { label: 'Help Centre', href: '/help' },
@@ -204,87 +159,91 @@ export function Footer() {
                 // { label: "Carrers", href: "/carrers" },
               ].map((l) => (
                 <li key={l.href}>
-                  <Link href={l.href} className="text-muted-foreground hover:text-cyan-500 transition-colors duration-150">
+                  <Link href={l.href} className="text-muted-foreground transition-colors duration-150 hover:text-cyan-500">
                     {l.label}
                   </Link>
                 </li>
               ))}
             </ul>
-          </div>
+          </nav>
 
-          {/* Legal - Split into 2 columns for better spacing */}
-          <div className="lg:col-span-2">
-            <h3 className="text-sm font-semibold mb-5 text-foreground uppercase tracking-wider">Legal</h3>
-            <ul className="space-y-3 text-sm">
-              {legalLinks.slice(0, 4).map((l) => (
+          <nav aria-label="Legal" className="col-span-2">
+            <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider text-foreground">Legal</h3>
+            <ul className="grid grid-cols-2 gap-x-6 gap-y-2.5 text-[15px]">
+              {legalLinks.map((l) => (
                 <li key={l.href}>
-                  <Link href={l.href} className="text-muted-foreground hover:text-cyan-500 transition-colors duration-150">
+                  <Link href={l.href} className="text-muted-foreground transition-colors duration-150 hover:text-cyan-500">
                     {l.label}
                   </Link>
                 </li>
               ))}
             </ul>
-          </div>
-
-          {/* Legal Continued */}
-          <div className="lg:col-span-2">
-            {/* Spacer header only reserved at the lg breakpoint, where this sits beside the first Legal column.
-                Hidden below lg so it doesn't eat vertical space while stacked on mobile/tablet. */}
-            <h3 className="hidden lg:block text-sm font-semibold mb-5 text-foreground uppercase tracking-wider opacity-0 pointer-events-none">Legal</h3>
-            <ul className="space-y-3 text-sm">
-              {legalLinks.slice(4).map((l) => (
-                <li key={l.href}>
-                  <Link href={l.href} className="text-muted-foreground hover:text-cyan-500 transition-colors duration-150">
-                    {l.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
+          </nav>
         </div>
 
-        {/* Divider */}
-        <div className="h-px bg-gradient-to-r from-border via-border to-border mb-8"></div>
-
-        {/* Bottom Bar */}
-        <div className="flex flex-row flex-wrap items-center justify-center gap-x-6 gap-y-3 text-xs text-muted-foreground text-center">
-          <div className="flex flex-col sm:flex-row items-center gap-x-2 gap-y-1">
-            <p>© {new Date().getFullYear()} Open Box. All rights reserved.</p>
-            <span className="hidden sm:inline text-muted-foreground/30">•</span>
-            <p suppressHydrationWarning>
-              Last updated: {new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}{' '}
-              {new Date().toLocaleTimeString('en-US', { hour12: false })}
-            </p>
-            <span className="hidden sm:inline text-muted-foreground/30">•</span>
-            {/* </div>
-
-          <div> */}
-            <p>
-              Want to contribute to the site?{'  '}
-              <Link
-                href={socialProfiles.github}
+        {/* Social row, centered */}
+        <section aria-label="Social links" className="mt-10 space-y-3 text-center">
+          <p className="text-sm font-semibold uppercase tracking-wider text-foreground">Connect With Us</p>
+          <div className="flex flex-wrap justify-center gap-3 sm:flex-nowrap">
+            {socialLinks.map((s) => (
+              <a
+                key={s.id}
+                id={s.id}
+                href={s.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 font-medium text-foreground/80 hover:text-cyan-500 transition-colors duration-150">
-                <GithubIcon className="h-4 w-4" />
-                GitHub
-              </Link>
-            </p>
-            <span className="hidden sm:inline text-muted-foreground/30">•</span>
-            {/* </div>
-
-          <div> */}
-            <p>
-              Built with passion by{' '}
-              <Link
-                href={CREATOR_HREF}
-                id="footer-creator"
-                className="font-medium text-foreground/80 hover:text-cyan-500 transition-colors duration-150"
+                aria-label={s.name}
+                title={s.name}
+                className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-border text-muted-foreground transition-all duration-200 hover:border-cyan-500 hover:bg-cyan-500/10 hover:text-cyan-500"
               >
-                {CREATOR_NAME}
-              </Link>
-            </p>
+                {s.icon}
+              </a>
+            ))}
           </div>
+        </section>
+
+      </div>
+
+      {/* Wordmark, full width so it can be big */}
+      <div aria-hidden="true" className="mt-10 overflow-hidden px-2 pb-6 text-center sm:px-4">
+        <span className="block whitespace-nowrap text-[clamp(3rem,12.5vw,18rem)] font-heading font-extrabold leading-[1.2] tracking-tight text-foreground">
+          Open Box
+        </span>
+      </div>
+
+      <div className="mx-auto max-w-7xl px-4 pb-8 sm:px-6 lg:px-8">
+        {/* Divider */}
+        <div className="h-px bg-gradient-to-r from-border via-border to-border"></div>
+
+        {/* Bottom Bar */}
+        <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 pt-6 text-center text-sm text-muted-foreground sm:justify-between">
+          <p>© {new Date().getFullYear()} Open Box. All rights reserved.</p>
+          <p suppressHydrationWarning>
+            Last updated: {new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}{' '}
+            {new Date().toLocaleTimeString('en-US', { hour12: false })} IST
+          </p>
+          <p className="inline-flex items-center gap-1.5">
+            Want to contribute to the site?{' '}
+            <Link
+              href={socialProfiles.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 font-medium text-foreground/80 transition-colors duration-150 hover:text-cyan-500"
+            >
+              <GithubIcon className="h-4 w-4" />
+              GitHub
+            </Link>
+          </p>
+          <p>
+            Built with passion by{' '}
+            <Link
+              href={CREATOR_HREF}
+              id="footer-creator"
+              className="font-medium text-foreground/80 transition-colors duration-150 hover:text-cyan-500"
+            >
+              {CREATOR_NAME}
+            </Link>
+          </p>
         </div>
       </div>
     </footer>
