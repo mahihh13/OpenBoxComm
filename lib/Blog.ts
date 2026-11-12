@@ -1,7 +1,86 @@
-// Blog.tsx — in-page content sections
-// slug → array of paragraphs (each string = one <p> block)
+export type BlogContentPart = string | { text: string; href: string }
 
-export const blogContents: Record<string, string[]> = {
+export type BlogContentBlock =
+  | { type: 'paragraph'; content: BlogContentPart[] }
+  | { type: 'section'; heading: string; paragraphs: BlogContentPart[][]; list?: string[] }
+  | { type: 'footer'; content: BlogContentPart[] }
+
+export const blogContents: Record<string, Array<string | BlogContentBlock>> = {
+  'diwali-with-openbox': [
+    'Happy Diwali, OpenBox. It is the one time of year we all agree to close the laptop for a bit, light a diya, and eat way too many sweets. So this post is short on updates and long on thanks.',
+    {
+      type: 'section',
+      heading: 'Why Diwali hits different',
+      paragraphs: [
+        [
+          'Diwali is about light winning over dark and starting fresh. Every developer knows that feeling. The bug you chased for three days finally dies, the build goes green, and everything feels possible again. Same energy, more sweets.',
+        ],
+        [
+          'For a lot of us it also means going home, seeing family, and taking a breather from deadlines, exams, and side projects that refuse to ship. You earned that break.',
+        ],
+      ],
+    },
+    {
+      type: 'section',
+      heading: 'What made this year good',
+      paragraphs: [
+        [
+          'OpenBox started as a place for developers, builders, gamers, and students in India to connect, learn, and make things together. It is free, and it stays free. Every server, from Junction to Dev, and GG, runs because members show up and help each other.',
+        ],
+        [
+          'We are not going to throw numbers at you today. The real wins are the small ones. Someone fixing a stranger\'s bug at midnight. A student asking a question without feeling dumb. A random group chat turning into an actual project.',
+        ],
+      ],
+    },
+    {
+      type: 'section',
+      heading: 'What we wish for you',
+      paragraphs: [],
+      list: [
+        'A project that finally ships',
+        'Exams, placements, and interviews that go your way',
+        'Real rest, away from the screen',
+        'People around you who cheer loudly when you win',
+        'A green build on the first try (rare, but wishes are free)',
+      ],
+    },
+    {
+      type: 'section',
+      heading: 'What is next',
+      paragraphs: [
+        [
+          'Next year we keep building. Better tools, more events, and more ways to connect with other builders. If you want to see how things work behind the scenes, the ',
+          { text: 'docs', href: '/doc' },
+          ' are open. If you want to back what we do, check out the ',
+          { text: 'support tiers', href: '/support' },
+          '.',
+        ],
+      ],
+    },
+    {
+      type: 'section',
+      heading: 'Celebrate with the community',
+      paragraphs: [
+        [
+          'Drop your diya photos, rangoli, and sweet plate flexes in your favorite server today. Wish someone you only know by their username. That counts too. Want to find where everyone hangs out? Head to ',
+          { text: 'our servers', href: '/servers' },
+          '.',
+        ],
+        [
+          'From all of us at OpenBox, happy Diwali. Stay safe, burst crackers responsibly, and keep building.',
+        ],
+      ],
+    },
+    {
+      type: 'footer',
+      content: [
+        { text: 'Join OpenBox', href: '/join' },
+        ', free for developers, builders, and students. Want to know more about who we are? Read the ',
+        { text: 'about page', href: '/about' },
+        '.',
+      ],
+    },
+  ],
   'why-we-removed-wick': [
     'On July 20, 2026, we removed Wick from the Open Box servers. Wick is a moderation bot, and we had been using it for a while. We are writing this because members deserve to know why.',
     'The short version: Wick was kicking members for having their Discord DMs disabled.',
@@ -83,6 +162,6 @@ export const blogContents: Record<string, string[]> = {
 
 };
 
-export function getBlogContent(slug: string): string[] | undefined {
+export function getBlogContent(slug: string): Array<string | BlogContentBlock> | undefined {
   return blogContents[slug]
 }

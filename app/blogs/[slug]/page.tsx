@@ -5,7 +5,7 @@ import Image from 'next/image'
 import { ArrowLeft, Github, Twitter, Instagram, Linkedin, Calendar, Clock } from 'lucide-react'
 import { Badge } from '@/components/ui/badge'
 import { blogs, getBlog, getTeamMember } from '@/lib/community-data'
-import { getBlogContent } from '@/lib/Blog'
+import { getBlogContent, type BlogContentPart } from '@/lib/Blog'
 import { TTSPlayer } from '@/components/TTSPlayer'
 import { SITE_URL } from '@/lib/constants'
 
@@ -39,6 +39,18 @@ function initials(name: string) {
     .join('')
     .slice(0, 2)
     .toUpperCase()
+}
+
+function renderInlineContent(parts: BlogContentPart[]) {
+  return parts.map((part, index) =>
+    typeof part === 'string' ? (
+      part
+    ) : (
+      <Link key={index} href={part.href} className="underline">
+        {part.text}
+      </Link>
+    )
+  )
 }
 
 export default async function BlogDetailPage({ params }: { params: Promise<{ slug: string }> }) {
@@ -176,85 +188,38 @@ export default async function BlogDetailPage({ params }: { params: Promise<{ slu
         </p>
 
         <div className="space-y-6 text-lg leading-8 text-foreground/80">
-          {slug === 'diwali-with-openbox' ? (
-            <>
-              <section className="space-y-4">
-                <p>
-                  Happy Diwali, OpenBox. It is the one time of year we all agree to close the laptop for a bit,
-                  light a diya, and eat way too many sweets. So this post is short on updates and long on thanks.
-                </p>
-              </section>
+          {content ? (
+            content.map((block, index) => {
+              if (typeof block === 'string') {
+                return <p key={index}>{block}</p>
+              }
 
-              <section className="mt-12 space-y-4">
-                <h2 className="text-2xl font-semibold">Why Diwali hits different</h2>
-                <p>
-                  Diwali is about light winning over dark and starting fresh. Every developer knows that feeling.
-                  The bug you chased for three days finally dies, the build goes green, and everything feels possible
-                  again. Same energy, more sweets.
-                </p>
-                <p>
-                  For a lot of us it also means going home, seeing family, and taking a breather from deadlines,
-                  exams, and side projects that refuse to ship. You earned that break.
-                </p>
-              </section>
+              if (block.type === 'paragraph') {
+                return <p key={index}>{renderInlineContent(block.content)}</p>
+              }
 
-              <section className="mt-12 space-y-4">
-                <h2 className="text-2xl font-semibold">What made this year good</h2>
-                <p>
-                  OpenBox started as a place for developers, builders, gamers, and students in India to connect,
-                  learn, and make things together. It is free, and it stays free. Every server, from Junction to Dev,
-                  GG, and Study, runs because members show up and help each other.
-                </p>
-                <p>
-                  We are not going to throw numbers at you today. The real wins are the small ones. Someone fixing a
-                  stranger&apos;s bug at midnight. A student asking a question without feeling dumb. A random group
-                  chat turning into an actual project.
-                </p>
-              </section>
+              if (block.type === 'section') {
+                return (
+                  <section key={index} className="mt-12 space-y-4">
+                    <h2 className="text-2xl font-semibold">{block.heading}</h2>
+                    {block.paragraphs.map((paragraph, paragraphIndex) => (
+                      <p key={paragraphIndex}>{renderInlineContent(paragraph)}</p>
+                    ))}
+                    {block.list && (
+                      <ul className="list-disc space-y-2 pl-6">
+                        {block.list.map((item) => <li key={item}>{item}</li>)}
+                      </ul>
+                    )}
+                  </section>
+                )
+              }
 
-              <section className="mt-12 space-y-4">
-                <h2 className="text-2xl font-semibold">What we wish for you</h2>
-                <ul className="list-disc space-y-2 pl-6">
-                  <li>A project that finally ships</li>
-                  <li>Exams, placements, and interviews that go your way</li>
-                  <li>Real rest, away from the screen</li>
-                  <li>People around you who cheer loudly when you win</li>
-                  <li>A green build on the first try (rare, but wishes are free)</li>
-                </ul>
-              </section>
-
-              <section className="mt-12 space-y-4">
-                <h2 className="text-2xl font-semibold">What is next</h2>
-                <p>
-                  Next year we keep building. Better tools, more events, and more ways to connect with other builders.
-                  If you want to see how things work behind the scenes, the{' '}
-                  <Link href="/doc" className="underline">docs</Link> are open. If you want to back what we do, check
-                  out the <Link href="/support" className="underline">support tiers</Link>.
-                </p>
-              </section>
-
-              <section className="mt-12 space-y-4">
-                <h2 className="text-2xl font-semibold">Celebrate with the community</h2>
-                <p>
-                  Drop your diya photos, rangoli, and sweet plate flexes in your favorite server today. Wish someone
-                  you only know by their username. That counts too. Want to find where everyone hangs out? Head to{' '}
-                  <Link href="/servers" className="underline">our servers</Link>.
-                </p>
-                <p>
-                  From all of us at OpenBox, happy Diwali. Stay safe, burst crackers responsibly, and keep building.
-                </p>
-              </section>
-
-              <footer className="mt-16 border-t border-border/50 pt-8">
-                <p>
-                  <Link href="/join" className="font-semibold underline">Join OpenBox</Link>, free for developers,
-                  builders, and students. Want to know more about who we are? Read the{' '}
-                  <Link href="/about" className="underline">about page</Link>.
-                </p>
-              </footer>
-            </>
-          ) : content ? (
-            content.map((paragraph, index) => <p key={index}>{paragraph}</p>)
+              return (
+                <footer key={index} className="mt-16 border-t border-border/50 pt-8">
+                  <p>{renderInlineContent(block.content)}</p>
+                </footer>
+              )
+            })
           ) : (
             <p className="text-muted-foreground">Content coming soon.</p>
           )}
