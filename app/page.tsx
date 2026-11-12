@@ -103,6 +103,24 @@ export default function Home() {
               </Button>
             </div>
 
+            <div className="mt-6 flex justify-start">
+              <a
+                href="https://www.producthunt.com/products/openboxcomm?embed=true&utm_source=badge-featured&utm_medium=badge&utm_campaign=badge-openboxcomm"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="View OpenBoxComm on Product Hunt"
+                className="inline-flex transition-transform duration-200 hover:scale-[1.02]"
+              >
+                <img
+                  alt="OpenBoxComm - Free Discord communities for devs, gamers and students | Product Hunt"
+                  width="250"
+                  height="54"
+                  src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1313901&theme=dark&t=1794478469945"
+                  className="h-auto w-[250px] max-w-full"
+                />
+              </a>
+            </div>
+
             {/* Real Experience Signals & Metrics */}
             {/* <div className="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-3 border-t border-border/70 pt-6">
               <div className="flex items-center gap-3">
