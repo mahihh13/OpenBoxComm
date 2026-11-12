@@ -434,6 +434,14 @@ export const events: Event[] = [
 
 export const blogs: Blog[] = [
   {
+    slug: 'diwali-with-openbox',
+    title: 'Happy Diwali from OpenBox',
+    server: 'Community Update',
+    date: '2026-11-08',
+    excerpt: 'Happy Diwali from the OpenBox team. A short note on light, fresh starts, and what we are building next for our developer community on Discord in India.',
+    readTime: '3 min read',
+  },
+  {
     slug: 'why-we-removed-wick',
     title: 'Why We Removed Wick',
     server: 'OB Team',

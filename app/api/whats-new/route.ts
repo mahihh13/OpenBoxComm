@@ -3,6 +3,15 @@ import { Update } from '@/types'
 
 const updates: Update[] = [
   {
+    id: 'diwali-with-openbox',
+    title: 'Happy Diwali from OpenBox',
+    type: 'blog',
+    date: '2026-11-08',
+    description: 'A short Diwali note on light, fresh starts, and the OpenBox community.',
+    href: '/blogs/diwali-with-openbox',
+    isNew: true,
+  },
+  {
     id: 'new-socials-whatsapp',
     title: 'Now on WhatsApp',
     type: 'community',
