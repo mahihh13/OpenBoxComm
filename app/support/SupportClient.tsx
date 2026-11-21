@@ -43,8 +43,8 @@ export default function SupportClient() {
     {
       id: 'npc',
       name: 'NPC',
-      monthlyPrice: 0.99,
-      annualPrice: 9.99,
+      monthlyPrice: 1,
+      annualPrice: 10,
       icon: Bot,
       description: 'Get in the game. Basic supporter perks and community recognition.',
       perks: ['Supporter badge', 'Early event announcements', 'Includes Discord benefits'],
@@ -61,8 +61,8 @@ export default function SupportClient() {
     {
       id: 'rookie',
       name: 'Rookie',
-      monthlyPrice: 1.99,
-      annualPrice: 19.99,
+      monthlyPrice: 2,
+      annualPrice: 20,
       icon: Flame,
       description: 'You are playing for real now. Expanded perks with a 7-day trial.',
       perks: ['Everything in NPC (All 3)', 'Monthly supporter shoutout', 'Members-only behind the scenes'],
@@ -79,8 +79,8 @@ export default function SupportClient() {
     {
       id: 'goat',
       name: 'GOAT',
-      monthlyPrice: 5.99,
-      annualPrice: 59.99,
+      monthlyPrice: 6,
+      annualPrice: 60,
       icon: Trophy,
       description: 'Reserved for the ones who go above and beyond. Exclusive access.',
       perks: [
@@ -103,8 +103,8 @@ export default function SupportClient() {
     {
       id: 'legend',
       name: 'Legend',
-      monthlyPrice: 7.99,
-      annualPrice: 79.99,
+      monthlyPrice: 8,
+      annualPrice: 80,
       icon: Crown,
       description: 'The highest tier. You are literally holding Open Box up.',
       perks: [
