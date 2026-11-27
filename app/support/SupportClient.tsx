@@ -3,21 +3,16 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import {
-  Gift,
   Sparkles,
   Crown,
   Trophy,
   Bot,
   Flame,
-  CheckCircle2,
-  Star,
   ChevronDown,
-  Info,
   Check,
   Zap,
   ShieldCheck,
   Heart,
-  ExternalLink,
   MessageSquare
 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
@@ -32,162 +27,153 @@ const DiscordIcon = ({ className = 'h-5 w-5' }: { className?: string }) => (
   </svg>
 )
 
+const tiers = [
+  {
+    id: 'npc',
+    name: 'NPC',
+    monthlyPrice: 1,
+    annualPrice: 10,
+    icon: Bot,
+    description: 'Get in the game. Basic supporter perks and community recognition.',
+    perks: ['Supporter badge', 'Early event announcements', 'Includes Discord benefits'],
+    badge: 'Entry Tier',
+    theme: {
+      glow: 'rgba(113, 113, 122, 0.15)',
+      accentColor: 'text-zinc-450 dark:text-zinc-500',
+      card: 'border-zinc-200 bg-white/70 hover:border-zinc-400 dark:bg-zinc-950/40 dark:border-zinc-800/80 dark:hover:border-zinc-700/80',
+      badge: 'bg-zinc-100 text-zinc-800 border-zinc-200 dark:bg-zinc-900 dark:text-zinc-400 dark:border-zinc-800',
+      button: 'bg-zinc-900 hover:bg-zinc-800 text-white dark:bg-zinc-800 dark:hover:bg-zinc-700 dark:text-zinc-100',
+      title: 'text-zinc-900 dark:text-zinc-100',
+    }
+  },
+  {
+    id: 'rookie',
+    name: 'Rookie',
+    monthlyPrice: 2,
+    annualPrice: 20,
+    icon: Flame,
+    description: 'You are playing for real now. Expanded perks with a 7-day trial.',
+    perks: ['Everything in NPC (All 3)', 'Monthly supporter shoutout', 'Members-only behind the scenes'],
+    badge: '7-Day Free Trial',
+    theme: {
+      glow: 'rgba(249, 115, 22, 0.25)',
+      accentColor: 'text-orange-500 dark:text-orange-400',
+      card: 'border-orange-200 bg-orange-50/20 hover:border-orange-400 dark:bg-orange-950/5 dark:border-orange-500/20 dark:hover:border-orange-500/50',
+      badge: 'bg-orange-100/60 text-orange-800 border-orange-200 dark:bg-orange-950/50 dark:text-orange-300 dark:border-orange-500/30',
+      button: 'bg-orange-500 hover:bg-orange-600 text-white dark:bg-orange-600 dark:hover:bg-orange-500 dark:text-white',
+      title: 'text-orange-850 dark:text-orange-350',
+    }
+  },
+  {
+    id: 'goat',
+    name: 'GOAT',
+    monthlyPrice: 6,
+    annualPrice: 60,
+    icon: Trophy,
+    description: 'Reserved for the ones who go above and beyond. Exclusive access.',
+    perks: [
+      'Everything in Rookie (All 5)',
+      'Voting rights on community decisions',
+      'Direct feedback channel with admins',
+      'Early access to Open Box events',
+      'Discount on next membership'
+    ],
+    badge: 'Most Popular',
+    theme: {
+      glow: 'rgba(16, 185, 129, 0.35)',
+      accentColor: 'text-emerald-500 dark:text-emerald-400',
+      card: 'border-emerald-200 bg-emerald-50/20 hover:border-emerald-400 dark:bg-emerald-950/5 dark:border-emerald-500/20 dark:hover:border-emerald-500/50 shadow-md shadow-emerald-500/5',
+      badge: 'bg-emerald-100/60 text-emerald-800 border-emerald-200 dark:bg-emerald-950/50 dark:text-emerald-350 dark:border-emerald-500/30 font-bold animate-pulse',
+      button: 'bg-emerald-500 hover:bg-emerald-600 text-white dark:bg-emerald-600 dark:hover:bg-emerald-500 dark:text-white',
+      title: 'text-emerald-850 dark:text-emerald-350',
+    }
+  },
+  {
+    id: 'legend',
+    name: 'Legend',
+    monthlyPrice: 8,
+    annualPrice: 80,
+    icon: Crown,
+    description: 'The highest tier. You are literally holding Open Box up.',
+    perks: [
+      'Everything in GOAT (All 9)',
+      'Priority consideration for staff recruitment',
+      'Direct line to core team via private channel',
+      'Name in Open Box credits on supporter page*'
+    ],
+    badge: 'Elite Supporter',
+    theme: {
+      glow: 'rgba(245, 158, 11, 0.45)',
+      accentColor: 'text-amber-500 dark:text-amber-400',
+      card: 'border-amber-200 bg-amber-50/20 hover:border-amber-400 dark:bg-amber-950/5 dark:border-amber-500/20 dark:hover:border-amber-500/50',
+      badge: 'bg-amber-100/60 text-amber-800 border-amber-200 dark:bg-amber-950/50 dark:text-amber-355 dark:border-amber-500/30',
+      button: 'bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white border-none',
+      title: 'text-amber-850 dark:text-amber-355',
+    }
+  }
+]
+
+const phantomPerks = [
+  'Everything in Legend (All 13)',
+  'Exclusive OP Supporter role — rare, visible on supporter wall',
+  '12–16% off paid OB events + priority spot',
+  'Monthly voice hangout with OB ',
+  'First dibs + discount when OB merch drops',
+  'Namedropped in DBW every week*',
+]
+
+const faqData = [
+  {
+    question: 'How do I sync my Discord perks?',
+    answer: 'Once you join a tier on Patreon, go to your Patreon account settings, select "Apps", and connect your Discord account. The Patreon bot will automatically sync your roles inside our Discord server within a few minutes!'
+  },
+  {
+    question: 'Can I change or cancel my tier at any time?',
+    answer: 'Yes! You can upgrade, downgrade, or cancel your subscription directly through Patreon at any time with no questions asked.'
+  },
+  {
+    question: 'Is there a discount for annual billing?',
+    answer: 'Absolutely! Selecting the annual billing option grants you 2 months free (about 16% discount) compared to monthly billing.'
+  },
+  {
+    question: 'Where do my contributions go?',
+    answer: 'Your contributions directly fund the essential infrastructure of Open Box. This includes server hosting, custom bot development, domain licensing, game/event servers, and tournament prize pools.'
+  },
+  {
+    question: 'Can I support using local currency or UPI?',
+    answer: 'Patreon supports multiple global currencies and payment options (Credit/Debit Card, PayPal, Apple Pay). For local options, Patreon automatically converts rates based on your regional currency.'
+  }
+]
+
+const metrics = [
+  { label: 'Server Infrastructures', value: 55, desc: 'High-availability hosting, web server nodes, DBs, and bot engines' },
+  { label: 'Event Prize Pools & Giveaways', value: 25, desc: 'Cash rewards, gaming setups, merchandise, and tournament financing' },
+  { label: 'Creative Tools & Doc Development', value: 20, desc: 'Developer compensation, documentation portal, API services, and assets' }
+]
+
+const comparisonFeatures = [
+  { name: 'Discord Supporter Badge & Role', npc: true, rookie: true, goat: true, legend: true, op: true },
+  { name: 'Early Event Announcements', npc: true, rookie: true, goat: true, legend: true, op: true },
+  { name: 'Members-Only Behind the Scenes', npc: false, rookie: true, goat: true, legend: true, op: true },
+  { name: 'Monthly Supporter Shoutout', npc: false, rookie: true, goat: true, legend: true, op: true },
+  { name: 'Voting Rights on Community Decisions', npc: false, rookie: false, goat: true, legend: true, op: true },
+  { name: 'Direct Feedback Channel with Admins', npc: false, rookie: false, goat: true, legend: true, op: true },
+  { name: 'Early Event Registration Access', npc: false, rookie: false, goat: true, legend: true, op: true },
+  { name: 'Priority Consideration for Staff Teams', npc: false, rookie: false, goat: false, legend: true, op: true },
+  { name: 'Direct Line to Core ', npc: false, rookie: false, goat: false, legend: true, op: true },
+  { name: 'Name on Website Credits Section', npc: false, rookie: false, goat: false, legend: true, op: true },
+  { name: 'Exclusive OP Supporter Discord Badge', npc: false, rookie: false, goat: false, legend: false, op: true },
+  { name: '12-16% Off All Ticketed Open Box Events', npc: false, rookie: false, goat: false, legend: false, op: true },
+  { name: 'Monthly Face-to-Face Voice Hangout', npc: false, rookie: false, goat: false, legend: false, op: true },
+  { name: 'DBW Show Credit Namedropped Weekly', npc: false, rookie: false, goat: false, legend: false, op: true },
+]
+
 export default function SupportClient() {
   const [billingCycle, setBillingCycle] = useState<'monthly' | 'annual'>('monthly')
   const [hoveredTier, setHoveredTier] = useState<string | null>(null)
   const [compareOpen, setCompareOpen] = useState(false)
   const [activeFAQ, setActiveFAQ] = useState<number | null>(null)
   const [syncStep, setSyncStep] = useState(0)
-
-  const tiers = [
-    {
-      id: 'npc',
-      name: 'NPC',
-      monthlyPrice: 1,
-      annualPrice: 10,
-      icon: Bot,
-      description: 'Get in the game. Basic supporter perks and community recognition.',
-      perks: ['Supporter badge', 'Early event announcements', 'Includes Discord benefits'],
-      badge: 'Entry Tier',
-      theme: {
-        glow: 'rgba(113, 113, 122, 0.15)',
-        accentColor: 'text-zinc-450 dark:text-zinc-500',
-        card: 'border-zinc-200 bg-white/70 hover:border-zinc-400 dark:bg-zinc-950/40 dark:border-zinc-800/80 dark:hover:border-zinc-700/80',
-        badge: 'bg-zinc-100 text-zinc-800 border-zinc-200 dark:bg-zinc-900 dark:text-zinc-400 dark:border-zinc-800',
-        button: 'bg-zinc-900 hover:bg-zinc-800 text-white dark:bg-zinc-800 dark:hover:bg-zinc-700 dark:text-zinc-100',
-        title: 'text-zinc-900 dark:text-zinc-100',
-      }
-    },
-    {
-      id: 'rookie',
-      name: 'Rookie',
-      monthlyPrice: 2,
-      annualPrice: 20,
-      icon: Flame,
-      description: 'You are playing for real now. Expanded perks with a 7-day trial.',
-      perks: ['Everything in NPC (All 3)', 'Monthly supporter shoutout', 'Members-only behind the scenes'],
-      badge: '7-Day Free Trial',
-      theme: {
-        glow: 'rgba(249, 115, 22, 0.25)',
-        accentColor: 'text-orange-500 dark:text-orange-400',
-        card: 'border-orange-200 bg-orange-50/20 hover:border-orange-400 dark:bg-orange-950/5 dark:border-orange-500/20 dark:hover:border-orange-500/50',
-        badge: 'bg-orange-100/60 text-orange-800 border-orange-200 dark:bg-orange-950/50 dark:text-orange-300 dark:border-orange-500/30',
-        button: 'bg-orange-500 hover:bg-orange-600 text-white dark:bg-orange-600 dark:hover:bg-orange-500 dark:text-white',
-        title: 'text-orange-850 dark:text-orange-350',
-      }
-    },
-    {
-      id: 'goat',
-      name: 'GOAT',
-      monthlyPrice: 6,
-      annualPrice: 60,
-      icon: Trophy,
-      description: 'Reserved for the ones who go above and beyond. Exclusive access.',
-      perks: [
-        'Everything in Rookie (All 5)',
-        'Voting rights on community decisions',
-        'Direct feedback channel with admins',
-        'Early access to Open Box events',
-        'Discount on next membership'
-      ],
-      badge: 'Most Popular',
-      theme: {
-        glow: 'rgba(16, 185, 129, 0.35)',
-        accentColor: 'text-emerald-500 dark:text-emerald-400',
-        card: 'border-emerald-200 bg-emerald-50/20 hover:border-emerald-400 dark:bg-emerald-950/5 dark:border-emerald-500/20 dark:hover:border-emerald-500/50 shadow-md shadow-emerald-500/5',
-        badge: 'bg-emerald-100/60 text-emerald-800 border-emerald-200 dark:bg-emerald-950/50 dark:text-emerald-350 dark:border-emerald-500/30 font-bold animate-pulse',
-        button: 'bg-emerald-500 hover:bg-emerald-600 text-white dark:bg-emerald-600 dark:hover:bg-emerald-500 dark:text-white',
-        title: 'text-emerald-850 dark:text-emerald-350',
-      }
-    },
-    {
-      id: 'legend',
-      name: 'Legend',
-      monthlyPrice: 8,
-      annualPrice: 80,
-      icon: Crown,
-      description: 'The highest tier. You are literally holding Open Box up.',
-      perks: [
-        'Everything in GOAT (All 9)',
-        'Priority consideration for staff recruitment',
-        'Direct line to core team via private channel',
-        'Name in Open Box credits on supporter page*'
-      ],
-      badge: 'Elite Supporter',
-      theme: {
-        glow: 'rgba(245, 158, 11, 0.45)',
-        accentColor: 'text-amber-500 dark:text-amber-400',
-        card: 'border-amber-200 bg-amber-50/20 hover:border-amber-400 dark:bg-amber-950/5 dark:border-amber-500/20 dark:hover:border-amber-500/50',
-        badge: 'bg-amber-100/60 text-amber-800 border-amber-200 dark:bg-amber-950/50 dark:text-amber-355 dark:border-amber-500/30',
-        button: 'bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white border-none',
-        title: 'text-amber-850 dark:text-amber-355',
-      }
-    }
-  ]
-
-  const phantomPerks = [
-    'Everything in Legend (All 13)',
-    'Exclusive OP Supporter role — rare, visible on supporter wall',
-    '12–16% off paid OB events + priority spot',
-    'Monthly voice hangout with OB ',
-    'First dibs + discount when OB merch drops',
-    'Namedropped in DBW every week*',
-  ]
-
-  const faqData = [
-    {
-      question: 'How do I sync my Discord perks?',
-      answer: 'Once you join a tier on Patreon, go to your Patreon account settings, select "Apps", and connect your Discord account. The Patreon bot will automatically sync your roles inside our Discord server within a few minutes!'
-    },
-    {
-      question: 'Can I change or cancel my tier at any time?',
-      answer: 'Yes! You can upgrade, downgrade, or cancel your subscription directly through Patreon at any time with no questions asked.'
-    },
-    {
-      question: 'Is there a discount for annual billing?',
-      answer: 'Absolutely! Selecting the annual billing option grants you 2 months free (about 16% discount) compared to monthly billing.'
-    },
-    {
-      question: 'Where do my contributions go?',
-      answer: 'Your contributions directly fund the essential infrastructure of Open Box. This includes server hosting, custom bot development, domain licensing, game/event servers, and tournament prize pools.'
-    },
-    {
-      question: 'Can I support using local currency or UPI?',
-      answer: 'Patreon supports multiple global currencies and payment options (Credit/Debit Card, PayPal, Apple Pay). For local options, Patreon automatically converts rates based on your regional currency.'
-    }
-  ]
-
-  const metrics = [
-    { label: 'Server Infrastructures', value: 55, desc: 'High-availability hosting, web server nodes, DBs, and bot engines' },
-    { label: 'Event Prize Pools & Giveaways', value: 25, desc: 'Cash rewards, gaming setups, merchandise, and tournament financing' },
-    { label: 'Creative Tools & Doc Development', value: 20, desc: 'Developer compensation, documentation portal, API services, and assets' }
-  ]
-
-  const comparisonFeatures = [
-    { name: 'Discord Supporter Badge & Role', npc: true, rookie: true, goat: true, legend: true, op: true },
-    { name: 'Early Event Announcements', npc: true, rookie: true, goat: true, legend: true, op: true },
-    { name: 'Members-Only Behind the Scenes', npc: false, rookie: true, goat: true, legend: true, op: true },
-    { name: 'Monthly Supporter Shoutout', npc: false, rookie: true, goat: true, legend: true, op: true },
-    { name: 'Voting Rights on Community Decisions', npc: false, rookie: false, goat: true, legend: true, op: true },
-    { name: 'Direct Feedback Channel with Admins', npc: false, rookie: false, goat: true, legend: true, op: true },
-    { name: 'Early Event Registration Access', npc: false, rookie: false, goat: true, legend: true, op: true },
-    { name: 'Priority Consideration for Staff Teams', npc: false, rookie: false, goat: false, legend: true, op: true },
-    { name: 'Direct Line to Core ', npc: false, rookie: false, goat: false, legend: true, op: true },
-    { name: 'Name on Website Credits Section', npc: false, rookie: false, goat: false, legend: true, op: true },
-    { name: 'Exclusive OP Supporter Discord Badge', npc: false, rookie: false, goat: false, legend: false, op: true },
-    { name: '12-16% Off All Ticketed Open Box Events', npc: false, rookie: false, goat: false, legend: false, op: true },
-    { name: 'Monthly Face-to-Face Voice Hangout', npc: false, rookie: false, goat: false, legend: false, op: true },
-    { name: 'DBW Show Credit Namedropped Weekly', npc: false, rookie: false, goat: false, legend: false, op: true },
-  ]
-
-  const wallOfFame = [
-    { name: 'Rohith', role: 'Co-Founder ', avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80', tier: 'Founder' },
-    { name: 'Mahi', role: 'Founder', avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80', tier: 'Founder' },
-    { name: 'Zenith', role: 'OP Supporter', avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=150&q=80', tier: 'OP Supporter' },
-    { name: 'Alex', role: 'Legend Supporter', avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=150&q=80', tier: 'Legend' },
-    { name: 'PixelQueen', role: 'GOAT Supporter', avatar: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=150&q=80', tier: 'GOAT' },
-    { name: 'NullPointer', role: 'Rookie Supporter', avatar: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=150&q=80', tier: 'Rookie' },
-  ]
 
   return (
     <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 font-body">
@@ -441,7 +427,7 @@ export default function SupportClient() {
 
                 <div className="flex items-baseline gap-1.5 mb-4">
                   <span className="text-5xl font-extrabold text-zinc-950 dark:text-white">
-                    ${billingCycle === 'monthly' ? 9.99 : 99.99}
+                    ${billingCycle === 'monthly' ? 10 : 100}
                   </span>
                   <span className="text-xs font-semibold text-purple-600/70 dark:text-purple-400/60">
                     /{billingCycle === 'monthly' ? 'mo' : 'yr'}
@@ -476,12 +462,10 @@ export default function SupportClient() {
 
               <div>
                 <Button
-                  asChild
-                  className="w-full sm:w-auto px-8 py-6 rounded-2xl text-sm font-extrabold bg-purple-600 text-white dark:bg-purple-500 dark:text-zinc-950 shadow-lg shadow-purple-500/20 hover:opacity-95 transition-all hover:scale-[1.01] border-none"
+                  disabled
+                  className="w-full sm:w-auto px-8 py-6 rounded-2xl text-sm font-extrabold bg-purple-600 text-white dark:bg-purple-500 dark:text-zinc-950 shadow-lg shadow-purple-500/20 opacity-60 cursor-not-allowed border-none"
                 >
-                  <a href={PATREON_URL} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2.5 justify-center">
-                    Notify when available
-                  </a>
+                  Coming Soon
                 </Button>
               </div>
             </div>
